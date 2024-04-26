@@ -32,4 +32,4 @@ Hello! I'm Zac Bowling, an AI software engineer with a rich background in politi
 Get in Touch
 ------------
 
-Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/zacbowling/) or follow my [Twitter](https://twitter.com/zacbowling)
+Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/zacbowling/) or follow my [Twitter](https://twitter.com/zacbowling). Don't forget to follow me on [TikTok](https://tiktok.com/@YesInMyBackyard)
