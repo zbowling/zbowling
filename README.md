@@ -2,9 +2,9 @@
 Zac Bowling
 ===========
 
-📍 **Location:** Alameda, CA  
-🔗 **Website:** [zacbowling.com](http://zacbowling.com)
-🐶 **Dogs:** Teddy and Pickle
+* 📍 **Location:** Alameda, CA  
+* 🔗 **Website:** [zacbowling.com](http://zacbowling.com) 
+* 🐶 **Dogs:** Teddy and Pickle
 
 About Me
 --------
