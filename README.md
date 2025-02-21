@@ -20,7 +20,7 @@ Hello! I'm Zac Bowling, an AI software engineer with a rich background in politi
 ### 🏛️ Advocacy
 
 *   **Interests:** Affordable housing, sustainable development, economic justice.
-*   **Positions Held:** Elected twice as an ADEM delegate to the California Democratic Party representing AD-18, former president of the City of Alameda Democratic Club. 
+*   **Positions Held:** Open Goverment Commisioner for the City of Alameda, Elected twice as an ADEM delegate to the California Democratic Party representing AD-18, former president of the City of Alameda Democratic Club. 
 *   **Activities:** Leader in East Bay YIMBY, advocating for policies that promote affordable and accessible housing.
 
 ### 😆 Fun facts
