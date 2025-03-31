@@ -9,7 +9,9 @@ Zac Bowling
 About Me
 --------
 
-Hello! I'm Zac Bowling, an AI software engineer with a rich background in political activism, affordable housing advocacy, and community leadership. Based in Alameda, California, I work on innovative technology projects while actively participating in grassroots movements to drive change in housing policy and good governance.
+Hello! I'm Zac Bowling. I'm in software engineer, political activist, affordable housing advocact, and community leader. Based in Alameda, California.
+
+I love working on innovative tech while participating in grassroots movements to drive change in housing policy and good governance.
 
 ### 🖥️ Tech
 
