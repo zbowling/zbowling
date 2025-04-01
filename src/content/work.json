@@ -1,9 +1,94 @@
 [
   {
     "id": 1,
-    "duration": "2024 - present",
-    "company": "Astro Community",
-    "title": "Astro Theme",
-    "description": "Existing as an Astro theme for anyone to use."
+    "duration": "2023 - present",
+    "company": "Modular",
+    "title": "Staff Software Engineer",
+    "description": "Staff Software Engineer in the San Francisco Bay Area."
+  },
+  {
+    "id": 2,
+    "duration": "2021 - present",
+    "company": "California Democratic Party",
+    "title": "Executive Board Member & DCCC Delegate (ADEM)",
+    "description": "Serving as an elected Executive Board Member (since Mar 2025) and ADEM Delegate (since Jan 2021)."
+  },
+  {
+    "id": 3,
+    "duration": "2025 - present",
+    "company": "City of Alameda",
+    "title": "Open Government Commissioner",
+    "description": "Serving as an Open Government Commissioner for the City of Alameda."
+  },
+  {
+    "id": 4,
+    "duration": "2015 - 2023",
+    "company": "Google",
+    "title": "Software Engineer",
+    "description": "Early member of Fuchsia OS team. Worked on core systems, drivers, toolchains, Bluetooth stack, developer tools/frameworks (Rust, C++, C, Swift, Dart, Go). Also worked on Chrome, Android, and other projects."
+  },
+  {
+    "id": 5,
+    "duration": "2012 - 2015",
+    "company": "Apportable (acquired by Google)",
+    "title": "Principal Software Engineer & Developer Evangelist",
+    "description": "Lead developer on Apportable/Tengu SDKs (Objective-C/Swift to Android/other platforms). Ported/reimplemented Objective-C runtime, CoreFoundation, Foundation, etc. Forked LLVM/Clang. Also served as Developer Evangelist."
+  },
+  {
+    "id": 6,
+    "duration": "2011 - 2012",
+    "company": "SeatMe, Inc. (acquired by Yelp)",
+    "title": "Lead iOS Developer",
+    "description": "First employee and lead iOS developer for a restaurant reservation system."
+  },
+  {
+    "id": 7,
+    "duration": "2010 - 2011",
+    "company": "View Inc",
+    "title": "Founder",
+    "description": "Startup developing mobile apps for local information sharing."
+  },
+  {
+    "id": 8,
+    "duration": "2009 - 2010",
+    "company": "doubleTwist",
+    "title": "Senior Software Engineer",
+    "description": "Developed a deesktop Music Player."
+  },
+  {
+    "id": 9,
+    "duration": "2009 - 2010",
+    "company": "Seesmic",
+    "title": "Software Engineer",
+    "description": "Mobile developer (iPhone and Android developer)."
+  },
+  {
+    "id": 10,
+    "duration": "2006 - 2008",
+    "company": "Texas Instruments",
+    "title": "Senior Software Engineer (TL)",
+    "description": "Working as part of the Education Technology division, focusing on the development of the latest generation of TI graphing calculators and educational software."
+  },
+  {
+    "id": 11,
+    "duration": "2005 - 2006",
+    "company": "Match.com",
+    "title": "Applications Engineer",
+    "description": "Designed and deployed double blind email services with web based frontends. Also was in charge of Win32 and Unix service integration and development in our division."
+  },
+  {
+    "id": 12,
+    "duration": "2003 - 2005",
+    "company": "OnlineISP",
+    "title": "Software Engineer",
+    "description": "Software and Systems Engineer for a mid-sized ISP."
+  },
+  {
+    "id": 13,
+    "duration": "2000 - 2001",
+    "company": "Microselect",
+    "title": "Software Developer",
+    "description": "Mobile (Palm/PocketPC) and Web based software development for medical practice management software."
   }
 ]
+

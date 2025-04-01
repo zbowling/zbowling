@@ -3,17 +3,48 @@
     "id": 1,
     "icon": {
       "type": "lucide",
-      "name": "cake"
+      "name": "map-pin"
     },
-    "text": "1 year old"
+    "text": "Alameda, CA"
   },
   {
     "id": 2,
     "icon": {
       "type": "lucide",
-      "name": "earth"
+      "name": "video"
     },
-    "type": "lucide",
-    "text": "Made in Germany"
+    "text": "YouTuber/TikToker"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
+      "name": "vote"
+    },
+    "text": "Executive Board @ CA Dem Party"
+  },
+  {
+    "id": 4,
+    "icon": {
+      "type": "lucide",
+      "name": "id-card"
+    },
+    "text": "Commissioner @ City of Alameda"
+  },
+  {
+    "id": 5,
+    "icon": {
+      "type": "lucide",
+      "name": "briefcase-business"
+    },
+    "text": "Engineer @ Modular"
+  },
+  {
+    "id": 6,
+    "icon": {
+      "type": "lucide",
+      "name": "dog"
+    },
+    "text": "Dogs: Teddy & Pickle"
   }
 ]

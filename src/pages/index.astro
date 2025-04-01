@@ -12,8 +12,9 @@ import { getEntry } from 'astro:content';
 import { render } from 'astro:content';
 import { name, openGraph } from 'spectre:globals';
 
-const [posts, projects, about, workExperience, quickInfo, socials] = await Promise.all([
-	getCollection('posts', (post) => post.data.draft !== true),
+const [/*posts,*/ cards, projects, about, workExperience, quickInfo, socials] = await Promise.all([
+	//getCollection('posts', (post) => post.data.draft !== true),
+	getCollection('cards'),
 	getCollection('projects'),
 	getEntry('other', 'about'),
 	getCollection('workExperience'),
@@ -23,6 +24,7 @@ const [posts, projects, about, workExperience, quickInfo, socials] = await Promi
 
 // biome-ignore lint/style/noNonNullAssertion: Should always be defined.
 const { Content: About } = await render(about!);
+
 ---
 
 <Layout
@@ -32,7 +34,7 @@ const { Content: About } = await render(about!);
 >
 	<div class="layout-grid-left" slot="left">
 		<Card class="flex-col-card">
-			<ImageGlow quality={100} width={80} height={80} src={ProfilePicture} alt="Louis looking out of a window" loading='eager' />
+			<ImageGlow quality={100} width={80} height={80} src={ProfilePicture} alt="Zac Bowling smiling" loading='eager' />
 			<h2>{name}</h2>
 			<ul class="overview-list">
 				{quickInfo.map((info) => (
@@ -67,6 +69,21 @@ const { Content: About } = await render(about!);
 				<About />
 			</div>
 		</Card>
+		{cards.sort((a, b) => (a.data.index ?? 0) - (b.data.index ?? 0)).map(async (card) => {
+			const { Content: CardContent } = await render(card);
+			return (
+				<Card>
+				<div class="header-container">
+					<Icon type={card.data.icon.type} name={card.data.icon.name as any} width={24} height={24} class='glow-icon' />
+					<h2>{card.data.title}</h2>
+				</div>
+				<div class="prose">
+					<CardContent />
+				</div>
+				</Card>
+			);
+		})}
+		<!--
 		<Card>
 			<div class="header-container">
 				<Icon type='lucide' name="rss" width={24} height={24} class='glow-icon' />
@@ -84,6 +101,7 @@ const { Content: About } = await render(about!);
 				))}
 			</div>
 		</Card>
+		-->
 		<Card>
 			<div class="header-container">
 				<Icon type='lucide' name="folder-git" width={24} height={24} class='glow-icon' />
@@ -107,7 +125,7 @@ const { Content: About } = await render(about!);
 				<h2>Work Experience</h2>
 			</div>
 			<div class="work-experience-container">
-				{workExperience.reverse().map((entry) => (
+				{workExperience.map((entry) => (
 					<div class="work-experience-entry">
 						<span class="work-experience-duration">{entry.data.duration}</span>
 						<h3 class="work-experience-company">{entry.data.company}</h3>

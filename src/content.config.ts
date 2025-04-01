@@ -54,6 +54,16 @@ const tags = defineCollection({
   })
 });
 
+const cards = defineCollection({
+  loader: glob({ base: "src/content/cards", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    icon: z.union([lucideIconSchema, simpleIconSchema]),
+    index: z.number().optional(),
+  })
+});
+
 const posts = defineCollection({
   loader: glob({ base: "src/content/posts", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) => z.object({
@@ -87,4 +97,4 @@ const projects = defineCollection({
   })
 });
 
-export const collections = { tags, posts, projects, other, quickInfo, socials, workExperience };
+export const collections = { tags, posts, cards, projects, other, quickInfo, socials, workExperience };

@@ -2,10 +2,198 @@
   {
     "id": 1,
     "icon": {
-      "type": "lucide",
+      "type": "simple-icons",
+      "name": "linkedin"
+    },
+    "text": "LinkedIn",
+    "link": "https://www.linkedin.com/in/zbowling/"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "simple-icons",
       "name": "github"
     },
     "text": "GitHub",
-    "link": "https://github.com/louisescher/spectre"
+    "link": "https://github.com/zbowling"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "simple-icons",
+      "name": "x"
+    },
+    "text": "Twitter / X",
+    "link": "https://twitter.com/zbowling"
+  },
+  {
+    "id": 4,
+    "icon": {
+      "type": "simple-icons",
+      "name": "tiktok"
+    },
+    "text": "TikTok",
+    "link": "https://tiktok.com/@YesInMyBackyard"
+  },{
+    "id": 5,
+    "icon": {
+      "type": "simple-icons",
+      "name": "youtube"
+    },
+    "text": "YouTube",
+    "link": "https://www.youtube.com/@YesInMyBackyard"
+  },
+  {
+    "id": 6,
+    "icon": {
+      "type": "simple-icons",
+      "name": "bluesky"
+    },
+    "text": "Bluesky",
+    "link": "https://bsky.app/profile/zacbowling.com"
+  },
+  {
+    "id": 7,
+    "icon": {
+      "type": "simple-icons",
+      "name": "facebook"
+    },
+    "text": "Facebook",
+    "link": "https://www.facebook.com/zbowling"
+  },
+  {
+    "id": 8,
+    "icon": {
+      "type": "simple-icons",
+      "name": "instagram"
+    },
+    "text": "Instagram",
+    "link": "https://www.instagram.com/zbowling"
+  },
+  {
+    "id": 9,
+    "icon": {
+      "type": "lucide",
+      "name": "mailbox"
+    },
+    "text": "Email",
+    "link": "mailto:zac@zacbowling.com"
+  },
+  {
+    "id": 10,
+    "icon": {
+      "type": "simple-icons",
+      "name": "substack"
+    },
+    "text": "Substack",
+    "link": "https://sub.zacbowling.com"
+  },
+  {
+    "id": 11,
+    "icon": {
+      "type": "simple-icons",
+      "name": "mastodon"
+    },
+    "text": "Mastodon",
+    "link": "https://sfba.social/@zbowling"
+  },
+  {
+    "id": 12,
+    "icon": {
+      "type": "simple-icons",
+      "name": "threads"
+    },
+    "text": "Threads",
+    "link": "https://www.threads.net/@zbowling"
+  },
+  {
+    "id": 13,
+    "icon": {
+      "type": "simple-icons",
+      "name": "flickr"
+    },
+    "text": "Flickr",
+    "link": "https://www.flickr.com/photos/zbowling"
+  },
+  {
+    "id": 14,
+    "icon": {
+      "type": "simple-icons",
+      "name": "unsplash"
+    },
+    "text": "Unsplash",
+    "link": "https://unsplash.com/@zbowling"
+  },
+  {
+    "id": 15,
+    "icon": {
+      "type": "simple-icons",
+      "name": "huggingface"
+    },
+    "text": "Hugging Face",
+    "link": "https://huggingface.co/zbowling"
+  },
+  {
+    "id": 16,
+    "icon": {
+      "type": "simple-icons",
+      "name": "linktree"
+    },
+    "text": "Linktree",
+    "link": "https://linktr.ee/yesinmybackyard"
+  },
+  {
+    "id": 17,
+    "icon": {
+      "type": "lucide",
+      "name": "globe"
+    },
+    "text": "Posthaven",
+    "link": "https://zbowling.com"
+  },
+  {
+    "id": 18,
+    "icon": {
+      "type": "simple-icons",
+      "name": "tumblr"
+    },
+    "text": "Tumblr",
+    "link": "https://zbowling.tumblr.com"
+  },
+  {
+    "id": 19,
+    "icon": {
+      "type": "simple-icons",
+      "name": "buymeacoffee"
+    },
+    "text": "Buy Me a Coffee",
+    "link": "https://buymeacoffee.com/zbowling"
+  },
+  {
+    "id": 20,
+    "icon": {
+      "type": "simple-icons",
+      "name": "tiktok"
+    },
+    "text": "Lemon8",
+    "link": "https://www.lemon8-app.com/@yesinmybackyard"
+  },
+  {
+    "id": 21,
+    "icon": {
+      "type": "simple-icons",
+      "name": "python"
+    },
+    "text": "PyPI",
+    "link": "https://pypi.org/user/zbowling/"
+  }, 
+  {
+    "id": 22,
+    "icon": {
+      "type": "simple-icons",
+      "name": "imdb"
+    },
+    "text": "IMDB",
+    "link": "https://www.imdb.com/name/nm7838510/"
   }
 ]
