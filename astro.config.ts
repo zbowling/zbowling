@@ -8,8 +8,6 @@ import spectre from './package/src';
 import node from '@astrojs/node';
 import { spectreDark } from './src/ec-theme';
 
-import netlify from '@astrojs/netlify';
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://zacbowling.com',
@@ -36,6 +34,5 @@ export default defineConfig({
         }
       }
     })
-  ],
-  adapter: netlify()
+  ]
 });

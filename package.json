@@ -12,6 +12,7 @@
     "postbuild": "pagefind --site dist"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.4.0",
     "@astrojs/mdx": "^4.2.0",
     "@astrojs/netlify": "^6.2.5",
     "@astrojs/node": "^9.1.3",
