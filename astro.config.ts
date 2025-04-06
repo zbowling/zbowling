@@ -8,10 +8,13 @@ import spectre from './package/src';
 import node from '@astrojs/node';
 import { spectreDark } from './src/ec-theme';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://zacbowling.com',
   output: 'static',
+
   integrations: [
     expressiveCode({
       themes: ["dark-plus"],
@@ -34,5 +37,7 @@ export default defineConfig({
         }
       }
     })
-  ]
+  ],
+
+  adapter: cloudflare()
 });
