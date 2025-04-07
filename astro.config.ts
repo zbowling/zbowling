@@ -38,13 +38,5 @@ export default defineConfig({
     }),
   ],
 
-  adapter: cloudflare({
-    runtime: {
-      mode: 'local',
-      type: 'pages',
-      bindings: {
-        // Add any bindings your app needs here
-      }
-    }
-  }),
+  adapter: cloudflare(),
 });
