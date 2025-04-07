@@ -1,0 +1,9 @@
+name = "zac-bowling-website"
+compatibility_date = "2024-04-06"
+compatibility_flags = ["nodejs_compat"]
+
+[site]
+bucket = "./dist"
+
+[build]
+command = "npm run build" 

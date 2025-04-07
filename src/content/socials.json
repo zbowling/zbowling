@@ -34,7 +34,8 @@
     },
     "text": "TikTok",
     "link": "https://tiktok.com/@YesInMyBackyard"
-  },{
+  },
+  {
     "id": 5,
     "icon": {
       "type": "simple-icons",
@@ -186,7 +187,7 @@
     },
     "text": "PyPI",
     "link": "https://pypi.org/user/zbowling/"
-  }, 
+  },
   {
     "id": 22,
     "icon": {
@@ -195,5 +196,14 @@
     },
     "text": "IMDB",
     "link": "https://www.imdb.com/name/nm7838510/"
+  },
+  {
+    "id": 23,
+    "icon": {
+      "type": "simple-icons",
+      "name": "crunchbase"
+    },
+    "text": "Crunchbase",
+    "link": "https://www.crunchbase.com/person/zac-bowling"
   }
 ]
