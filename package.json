@@ -4,10 +4,10 @@
   "version": "1.0.2",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "start": "node dist/server/entry.mjs",
-    "preview": "astro preview",
+    "dev": "wrangler types && astro dev",
+    "start": "wrangler types && astro dev",
+    "build": "wrangler types && astro check && astro build",
+    "preview": "wrangler types && astro preview",
     "astro": "astro"
   },
   "dependencies": {
