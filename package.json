@@ -8,9 +8,14 @@
     "start": "wrangler types && astro dev",
     "build": "wrangler types && astro check && astro build",
     "preview": "wrangler types && astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "dev:bun": "npx wrangler types && npx wrangler pages dev ./dist",
+    "start:bun": "npx wrangler types && npx wrangler pages dev ./dist",
+    "build:bun": "npx wrangler types && npx astro check && npx astro build",
+    "preview:bun": "npx wrangler types && npx astro preview"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.5",
     "@astrojs/cloudflare": "^12.6.10",
     "@astrojs/mdx": "^4.3.10",
     "@astrojs/netlify": "^6.6.0",
@@ -22,10 +27,12 @@
     "@shikijs/themes": "^3.15.0",
     "astro": "^5.15.4",
     "astro-expressive-code": "^0.41.3",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@types/node": "^24.10.0",
     "shiki": "^1.29.2"
   }
 }

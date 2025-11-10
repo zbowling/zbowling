@@ -15,8 +15,8 @@ I love working on innovative tech while participating in grassroots movements to
 
 ### 🖥️ Tech
 
-* **Current Role:** Staff Software Engineer @ Modular
-* **Past:** Engineer on Fuchsia @ Google, Apportable, View.io, Texas Instruments, Match.com, doubleTwist, and SeatMe.
+* **Current Role:** Staff Software Engineer @ Meta
+* **Past:** Engineer on Modular, Fuchsia @ Google, Apportable, View.io, Texas Instruments, Match.com, doubleTwist, and SeatMe.
 * **Random things I'm good at:** Building compilers, creating operating systems, undermining build systems, hacking Bluetooth, reverse engineering shipped code, forensic debugging, building startups, video production, public speaking, business development, ham radio/SDRs
 
 ### 🏛️ Advocacy
