@@ -28,7 +28,7 @@ I love working on innovative tech while participating in grassroots movements to
 ### 😆 Fun facts
 
 * Competed in over 140+ hackathons from 2008 to 2013
-* I run both the Alameda Reddit and Alameda Peeps Facebook groups, which have over 18,000 residents each from Alameda, CA.
+* I run both the Alameda Reddit (25.8K members) and [Alameda Peeps](https://www.alamedapeeps.com/) Facebook groups (20.4K members), which have over 20,000 residents each from Alameda, CA.
 * I have a TikTok and YouTube channel with over 140,000 subscribers combined.
 * I have a lovely wife and two dogs :)
 
