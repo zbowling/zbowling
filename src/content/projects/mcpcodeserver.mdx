@@ -1,0 +1,45 @@
+---
+title: MCP Code Server
+date: 2024-10-13
+description: A Model Context Protocol (MCP) proxy server that translates tool calls into TypeScript code generation, reducing token overhead and leveraging LLM code generation capabilities.
+image: ../assets/spectre.png
+link: https://github.com/zbowling/mcpcodeserver
+info:
+  - text: GitHub Repository
+    link: https://github.com/zbowling/mcpcodeserver
+    icon:
+      type: simple-icons
+      name: github
+  - text: MIT License
+    icon:
+      type: lucide
+      name: file-text
+---
+
+[MCP Code Server](https://github.com/zbowling/mcpcodeserver) is a Model Context Protocol (MCP) proxy server that translates tool calls into TypeScript code generation. Instead of making multiple tool calls back and forth, LLMs can write TypeScript code that calls multiple tools naturally, reducing token overhead and leveraging the LLM's superior code generation capabilities.
+
+## Key Features
+
+* **TypeScript Code Generation**: Automatically generates TypeScript type definitions for all discovered tools from child MCP servers
+* **Sandboxed Execution**: Executes TypeScript code in a secure sandbox with access to all discovered tool functions
+* **Multi-Tool Operations**: Enables complex workflows that combine multiple tools in a single code execution
+* **Upstream Server Integration**: Supports integration with official upstream MCP servers (filesystem, memory, sqlite, github, brave-search, fetch)
+* **Error Handling**: Graceful error handling with stack traces and recovery mechanisms
+
+## Use Cases
+
+* **Multi-File Operations**: Read and process multiple files in a single code execution
+* **Data Transformation**: Process data between tool calls without LLM intervention
+* **Conditional Logic**: Make decisions based on tool results
+* **Error Recovery**: Handle errors gracefully without aborting entire workflows
+* **Cross-Server Workflows**: Combine tools from multiple MCP servers in unified workflows
+
+## Technology Stack
+
+* TypeScript 5.7+
+* Node.js 18+
+* MCP TypeScript SDK 1.20+
+* Zod for validation
+
+The project has gained **8 stars** and **1 fork** on GitHub, demonstrating its utility for developers working with Model Context Protocol integrations.
+
