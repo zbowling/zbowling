@@ -97,4 +97,18 @@ const projects = defineCollection({
   })
 });
 
-export const collections = { tags, posts, cards, projects, other, quickInfo, socials, workExperience };
+const news = defineCollection({
+  loader: file("src/content/news.json"),
+  schema: z.object({
+    id: z.number(),
+    title: z.string(),
+    date: z.coerce.date(),
+    url: z.string().url(),
+    publication: z.string(),
+    category: z.string().nullable().optional(),
+    description: z.string().nullable().optional(),
+    featured: z.boolean().optional().default(false),
+  })
+});
+
+export const collections = { tags, posts, cards, projects, other, quickInfo, socials, workExperience, news };

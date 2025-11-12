@@ -28,26 +28,29 @@ const { project: projectParam } = Astro.params;
 const { project: projectFromProps } = Astro.props;
 
 // In SSR mode, we might need to fetch the project if it's not in props
-let project = projectFromProps;
+let project: CollectionEntry<"projects"> | undefined = projectFromProps;
 
 if (!project && projectParam) {
   const projects = await getCollection("projects");
-  project = projects.find((p) => p.id === projectParam);
+  project = projects.find((p) => p.id === projectParam) ?? undefined;
 }
 
 if (!project) {
   return Astro.redirect("/projects");
 }
 
-const { Content } = await render(project);
+// TypeScript now knows project is defined after the redirect check
+const projectData: CollectionEntry<"projects"> = project;
+
+const { Content } = await render(projectData);
 ---
 
 <Layout
-  title={project.data.title}
-  description={project.data.description}
-  image={project.data.image}
+  title={projectData.data.title}
+  description={projectData.data.description}
+  image={projectData.data.image}
   article={{
-    createdAt: project.data.date,
+    createdAt: projectData.data.date,
   }}
 >
   <div class="left" slot="left">
@@ -55,7 +58,7 @@ const { Content } = await render(project);
       <h2 class="no-mt">Info</h2>
       <ul class="overview-list">
         {
-          project.data.info?.map((info) => {
+          projectData.data.info?.map((info) => {
             const Tag = info.link ? "a" : "div";
             return (
               <li>
@@ -80,21 +83,21 @@ const { Content } = await render(project);
     <Card>
       <div class="article-header" id="_top">
         {
-          project.data.image && (
+          projectData.data.image && (
             <ImageGlow
               quality={100}
               class="article-image"
-              src={project.data.image}
-              alt={project.data.title}
+              src={projectData.data.image}
+              alt={projectData.data.title}
             />
           )
         }
         <div class="header">
           <div>
-            <h1 class="no-mt article-h1">{project.data.title}</h1>
+            <h1 class="no-mt article-h1">{projectData.data.title}</h1>
           </div>
           <div class="article-info">
-            <span>{project.data.date.toLocaleDateString()}</span>
+            <span>{projectData.data.date.toLocaleDateString()}</span>
           </div>
         </div>
       </div>

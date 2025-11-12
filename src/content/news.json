@@ -1,0 +1,572 @@
+[
+  {
+    "id": 1,
+    "title": "Fuchsia Friday: The dream team behind Google's new OS",
+    "date": "2018-04-13",
+    "url": "https://9to5google.com/2018/04/13/fuchsia-friday-the-dream-team-behind-googles-new-os/",
+    "publication": "9to5Google",
+    "category": "Technology",
+    "description": "Featured as part of the Fuchsia OS development team",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Bridge, tunnel crowd",
+    "date": "2018-07-12",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/letters/9509",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Editor: The bridges and tunnels we have are more than adequate...",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "title": "Council Moves Forward",
+    "date": "2019-07-25",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/council-moves-forward",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Divided community response reflects attitudes toward Council's legal fees",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "COVID-19 Testing",
+    "date": "2020-07-28",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/covid-19-testing",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Alameda's COVID-19 testing site has been plagued with temporary shutdowns...",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "Fear mongering and homeless stereotyping",
+    "date": "2019-03-21",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/letters/10825",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Editor: I was once homeless. I stumbled into Alameda some 10 years ago...",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Preserve our community by voting Yes on Z",
+    "date": "2020-10-01",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/letters/13511",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Editor: One of the questions we require before allowing anyone to join the Alameda Peeps Facebook group...",
+    "featured": false
+  },
+  {
+    "id": 7,
+    "title": "Putting AB 1322 in its Proper Context",
+    "date": "2021-05-05",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/putting-ab-1322-its-proper-context-0",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "News Analysis In January 2023, Alameda must submit a plan...",
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title": "Putting AB 1322 in its Proper Context",
+    "date": "2021-05-13",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/putting-ab-1322-its-proper-context-1",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Assembly passed bill on Monday Zac Bowling Part three of three...",
+    "featured": false
+  },
+  {
+    "id": 9,
+    "title": "Putting AB 1322 in its Proper Context",
+    "date": "2021-04-28",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/putting-ab-1322-its-proper-context",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Zac Bowling Part one in a series",
+    "featured": false
+  },
+  {
+    "id": 10,
+    "title": "Putting AB 1322 in its Proper Context",
+    "date": "2021-04-28",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/putting-ab-1322-its-proper-context",
+    "publication": "Alameda Sun",
+    "category": "Opinion",
+    "description": "Zac Bowling Part one in a series",
+    "featured": false
+  },
+  {
+    "id": 11,
+    "title": "SB 9 Needed But with Possible Changes",
+    "date": "2022-01-13",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/letters/15139",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Mayor and Council: I ask that you adopt the resolution...",
+    "featured": false
+  },
+  {
+    "id": 12,
+    "title": "Ballot battle in town of Alameda pits multiunit housing against single-family homes",
+    "date": "2020-10-01",
+    "url": "https://www.sfchronicle.com/bayarea/article/Ballot-battle-in-town-of-Alameda-pits-multiunit-15619564.php",
+    "publication": "San Francisco Chronicle",
+    "category": "Housing",
+    "description": "Coverage of Measure Z housing ballot initiative in Alameda",
+    "featured": true
+  },
+  {
+    "id": 13,
+    "title": "Support SB 9 & 10: More homes in our neighborhoods",
+    "date": "2021-08-12",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/letters/14579",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "Editor: California's housing shortage began with the downzonings of the 1970s and 80s...",
+    "featured": false
+  },
+  {
+    "id": 14,
+    "title": "The State of Site A",
+    "date": "2019-02-14",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/state-site",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "A drone piloted by Alameda resident Zac Bowling captured the view...",
+    "featured": false
+  },
+  {
+    "id": 15,
+    "title": "The Truth Matters",
+    "date": "2019-03-13",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/letters/10778",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "As the April 9th special election is getting closer...",
+    "featured": false
+  },
+  {
+    "id": 16,
+    "title": "The Truth Matters",
+    "date": "2019-03-14",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/truth-matters",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 17,
+    "title": "Google adds support for Apple's Swift programming language to Fuchsia",
+    "date": "2017-11-20",
+    "url": "https://www.theverge.com/google/2017/11/20/16681556/apple-swift-language-google-fuchsia-os-open-source",
+    "publication": "The Verge",
+    "category": "Technology",
+    "description": "Coverage of enabling Swift to run natively on Fuchsia OS",
+    "featured": true
+  },
+  {
+    "id": 18,
+    "title": "How Apple's Developer Conference Grew Too Big for Its Own Developers",
+    "date": "2013-04-26",
+    "url": "https://www.wired.com/2013/04/why-wwdc-is-too-big/",
+    "publication": "Wired",
+    "category": "Technology",
+    "description": "Zac Bowling quoted about WWDC ticket access and developer experience",
+    "featured": true
+  },
+  {
+    "id": 19,
+    "title": "Google, Meta, Big Tech Is Bad at Firing",
+    "date": "2023-01-20",
+    "url": "https://www.wired.com/story/google-meta-big-tech-is-bad-at-firing/",
+    "publication": "Wired",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 20,
+    "title": "Google layoffs: Employees turn to Discord for emotional support, financial advice",
+    "date": "2023-02-01",
+    "url": "https://www.businessinsider.com/google-layoffs-employees-discord-emotional-support-financial-advice-job-2023-2",
+    "publication": "Business Insider",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 21,
+    "title": "Rescue dog Benny dies in Alameda after eating cupcakes with xylitol",
+    "date": "2023-03-15",
+    "url": "https://www.ktvu.com/news/rescue-dog-benny-dies-in-alameda-after-eating-cupcakes-with-xylitol",
+    "publication": "KTVU",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 22,
+    "title": "Future Alameda wellness and medical respite center moves forward",
+    "date": "2021-08-04",
+    "url": "https://www.eastbaytimes.com/2021/08/04/future-alameda-wellness-and-medical-respite-center-moves-forward/",
+    "publication": "East Bay Times",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 23,
+    "title": "Bay Area cities face long odds in fighting state housing mandates",
+    "date": "2021-09-15",
+    "url": "https://www.sfchronicle.com/bayarea/article/Bay-Area-cities-face-long-odds-in-fighting-16336003.php",
+    "publication": "San Francisco Chronicle",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 24,
+    "title": "Ballot battle in town of Alameda pits multiunit housing against single-family homes",
+    "date": "2020-10-01",
+    "url": "https://www.sfchronicle.com/bayarea/article/Ballot-battle-in-town-of-Alameda-pits-multiunit-15619564.php",
+    "publication": "San Francisco Chronicle",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 25,
+    "title": "Fuchsia Friday: The dream team behind Google's new OS",
+    "date": "2018-04-13",
+    "url": "https://9to5google.com/2018/04/13/fuchsia-friday-the-dream-team-behind-googles-new-os/",
+    "publication": "9to5Google",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 26,
+    "title": "Google adds support for Apple's Swift programming language to Fuchsia",
+    "date": "2017-11-20",
+    "url": "https://www.androidauthority.com/google-adds-support-for-apples-swift-programming-language-to-fuchsia-816381/",
+    "publication": "Android Authority",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 27,
+    "title": "Google adds support for Apple's Swift programming language to Fuchsia",
+    "date": "2017-11-20",
+    "url": "https://www.theverge.com/google/2017/11/20/16681556/apple-swift-language-google-fuchsia-os-open-source",
+    "publication": "The Verge",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 28,
+    "title": "Google adds Fuchsia support to Apple's Swift",
+    "date": "2017-11-20",
+    "url": "https://www.osnews.com/story/30094/google-adds-fuchsia-support-to-apples-swift/",
+    "publication": "OSNews",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 29,
+    "title": "First Look: View.io Lets You See News and Info About Places Near You",
+    "date": "2011-03-09",
+    "url": "https://www.businessinsider.com/first-look-viewio-lets-you-see-news-and-info-about-places-near-you-2011-3",
+    "publication": "Business Insider",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 30,
+    "title": "View.io",
+    "date": "2011-03-05",
+    "url": "http://techcrunch.com/2011/03/05/view/",
+    "publication": "TechCrunch",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 31,
+    "title": "Aussie Linux head: Microsoft more open than iPhone",
+    "date": "2008-06-10",
+    "url": "http://www.zdnet.com/article/aussie-linux-head-microsoft-more-open-than-iphone/",
+    "publication": "ZDNet",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 32,
+    "title": "iPhone SDK agreement is a giant joke on several levels",
+    "date": "2008-03-17",
+    "url": "http://www.cnet.com/news/iphone-sdk-agreement-is-a-giant-joke-on-several-levels/",
+    "publication": "CNET",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 33,
+    "title": "If the iPhone SDK is a joke, Apple will be laughing all the way to the bank",
+    "date": "2008-03-17",
+    "url": "https://venturebeat.com/2008/03/17/if-the-iphone-sdk-is-a-joke-apple-will-be-laughing-all-the-way-to-the-bank/",
+    "publication": "VentureBeat",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 34,
+    "title": "Too militaristic: Alameda police to keep armored vehicle",
+    "date": "2021-04-01",
+    "url": "https://www.eastbaytimes.com/2021/04/01/too-militaristic-alameda-police-to-keep-armored-vehicle/",
+    "publication": "East Bay Times",
+    "category": null,
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 35,
+    "title": "Google secretly acqui-hired mobile app development startup Apportable",
+    "date": "2016-08-18",
+    "url": "https://venturebeat.com/2016/08/18/google-secretly-acqui-hired-mobile-app-development-startup-apportable/",
+    "publication": "VentureBeat",
+    "category": "Technology",
+    "description": "Coverage of Apportable acquisition by Google",
+    "featured": true
+  },
+  {
+    "id": 36,
+    "title": "Storyboard: Hackathons",
+    "date": "2012-02-01",
+    "url": "https://www.wired.com/2012/02/storyboard-hackathons/",
+    "publication": "Wired",
+    "category": "Technology",
+    "description": "Featured in Wired article about hackathons",
+    "featured": true
+  },
+  {
+    "id": 37,
+    "title": "Workshop Held to Discuss Shopping Center Zoning",
+    "date": "2022-01-20",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedasun.com/news/workshop-held-discuss-shopping-center-zo",
+    "publication": "Alameda Sun",
+    "category": "Other",
+    "description": "On Jan. 10th, the Planning Board held a public workshop...",
+    "featured": false
+  },
+  {
+    "id": 38,
+    "title": "Google adds support for Apple's Swift programming language to Fuchsia",
+    "date": "2017-11-20",
+    "url": "https://www.theverge.com/2017/11/20/16679342/google-fuchsia-os-swift-language-support",
+    "publication": "The Verge",
+    "category": "Technology",
+    "description": "Coverage of enabling Swift to run natively on Fuchsia OS",
+    "featured": false
+  },
+  {
+    "id": 39,
+    "title": "HCD Must Include Jobs-Housing Balance in Housing Element Review",
+    "date": "2022-01-01",
+    "url": "https://www.yimbylaw.org/press/hcd-include-jobs-housing-balance",
+    "publication": "YIMBY Law",
+    "category": "Housing",
+    "description": "Press release about winning lawsuit against California HCD for underestimating housing needs",
+    "featured": true
+  },
+  {
+    "id": 40,
+    "title": "Post-election update",
+    "date": "2024-11-01",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedapost.com/news/post-election-update-3/",
+    "publication": "Alameda Post",
+    "category": "Politics",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 41,
+    "title": "Draft zoning amendments considered",
+    "date": "2024-10-01",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedapost.com/news/draft-zoning-amendments-considered/",
+    "publication": "Alameda Post",
+    "category": "Housing",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 42,
+    "title": "Alameda's high-injury corridor set for revamp",
+    "date": "2024-09-01",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedapost.com/news/alamedas-high-injury-corridor-set-for-revamp/",
+    "publication": "Alameda Post",
+    "category": "Transportation",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 43,
+    "title": "Council approves events grant program, more housing",
+    "date": "2024-08-01",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedapost.com/news/council-approves-events-grant-program-more-housing/",
+    "publication": "Alameda Post",
+    "category": "Housing",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 44,
+    "title": "Updated masking guidelines, OAK noise, a conversation about housing",
+    "date": "2024-07-01",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedapost.com/news/updated-masking-guidelines-oak-noise-a-conversation-about-housing/",
+    "publication": "Alameda Post",
+    "category": "Housing",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 45,
+    "title": "APA Caucus compiles DCC information for AD-18",
+    "date": "2024-06-01",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedapost.com/op-ed/apa-caucus-compiles-dcc-information-for-ad-18/",
+    "publication": "Alameda Post",
+    "category": "Politics",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 46,
+    "title": "Salary increase for council on November ballot",
+    "date": "2024-05-01",
+    "url": "https://web.archive.org/web/20231126052140/https://alamedapost.com/news/salary-increase-for-council-on-november-ballot/",
+    "publication": "Alameda Post",
+    "category": "Politics",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 47,
+    "title": "The State of Mobile Gaming with Apportable",
+    "date": "2014-01-01",
+    "url": "https://techtalkscentral.com/interview/the-state-of-mobile-gaming-with-apportable/",
+    "publication": "Tech Talks Central",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 48,
+    "title": "Zac Bowling",
+    "date": "2013-01-01",
+    "url": "https://www.pocketgamer.biz/industry/zac-bowling/",
+    "publication": "PocketGamer.biz",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 49,
+    "title": "Confessions of an 80x Hackathon Contender",
+    "date": "2012-03-26",
+    "url": "https://www.sparkminute.com/2012/03/26/confessions-of-an-80x-hackathon-contender/",
+    "publication": "Spark Minute",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 50,
+    "title": "District delegates to state Democratic Party central committee meeting celebrate election victory",
+    "date": "2021-01-01",
+    "url": "https://postnewsgroup.com/district-delegates-to-state-democratic-party-central-committee-meeting-celebrate-election-victory/",
+    "publication": "Post News Group",
+    "category": "Politics",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 51,
+    "title": "First Look: View.io Lets You See News and Info About Places Near You",
+    "date": "2011-03-09",
+    "url": "https://scobleizerblog.wordpress.com/2011/03/09/first-look-view-io-lets-you-see-news-and-info-about-places-near-you/",
+    "publication": "Scobleizer",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 52,
+    "title": "Apple Store Genius Coding Class",
+    "date": "2012-01-01",
+    "url": "https://www.dailydot.com/irl/apple-store-genius-coding-class/",
+    "publication": "Daily Dot",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 53,
+    "title": "Playing Games: Nexus Possibility",
+    "date": "2012-07-01",
+    "url": "https://theultralinx.com/2012/07/playing-games-nexus-possibility/",
+    "publication": "The Ultra Linx",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 54,
+    "title": "Developers tackle solar energy issues with code at Oakland's CleanWeb hackathon",
+    "date": "2012-06-12",
+    "url": "https://oaklandnorth.net/2012/06/12/developers-tackle-solar-energy-issues-with-code-at-oaklands-cleanweb-hackathon/",
+    "publication": "Oakland North",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 55,
+    "title": "Hacking: Helping Businesses Beyond Tech",
+    "date": "2012-01-01",
+    "url": "https://finance.yahoo.com/news/hacking-helping-businesses-beyond-tech-170000239.html",
+    "publication": "Yahoo Finance",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 56,
+    "title": "How to Host a Hackathon",
+    "date": "2013-01-01",
+    "url": "https://www.experthub.info/business/growing-a-business/innovation/how-to-host-a-hackathon/",
+    "publication": "Expert Hub",
+    "category": "Technology",
+    "description": null,
+    "featured": false
+  },
+  {
+    "id": 57,
+    "title": "Last-minute push for votes on Prop. 50 in the Bay Area",
+    "date": "2016-06-05",
+    "url": "https://www.cbsnews.com/sanfrancisco/video/last-minute-push-for-votes-on-prop-50-in-the-bay-area/",
+    "publication": "CBS News",
+    "category": "Politics",
+    "description": "Interview about Democratic club canvassing efforts for Proposition 50 less than 48 hours before election day",
+    "featured": false
+  }
+]
