@@ -6,12 +6,6 @@ This file provides guidance to AI agents (like Claude Code) when working with co
 
 Before running any commands, ensure dependencies are installed:
 
-**Using npm:**
-```bash
-npm install
-```
-
-**Using bun:**
 ```bash
 bun install
 ```
@@ -20,89 +14,54 @@ bun install
 
 ### Development Server
 
-**Using npm:**
 ```bash
-npm run dev
+bun run dev
 # or
-npm start
+bun run start
 ```
 
-**Using bun:**
-```bash
-bun run dev:bun
-# or
-bun run start:bun
-```
-
-**Important:** When using bun, you **must** use the `:bun` variants of the scripts (e.g., `dev:bun`, `build:bun`). 
-
-**Troubleshooting:** If you see "Unexpected token 'with'" errors when using `bun run dev` or `bunx astro dev`, this is because bun's module resolution can conflict with how Astro/Cloudflare adapter loads modules in SSR mode. The `:bun` scripts use `wrangler pages dev` instead of `astro dev` to work around this issue.
-
-**Important:** The `dev:bun` script uses `wrangler pages dev` which serves the built output from `./dist`. This means:
-1. You need to run `bun run build:bun` first to build the site
-2. The dev server will serve the built output (no hot reload)
-3. You'll need to rebuild after making changes
-
-For a better development experience with hot reload, use `npm run dev` instead of `bun run dev:bun`.
+In Astro 6, the dev server runs inside Cloudflare's `workerd` runtime via the Vite Environment API. This means `astro dev` runs your code in the same runtime as production, with access to Cloudflare bindings, KV, etc.
 
 ### Build
 
-**Using npm:**
 ```bash
-npm run build
-```
-
-**Using bun:**
-```bash
-bun run build:bun
+bun run build
 ```
 
 This runs `wrangler types && astro check && astro build` which:
-1. Generates Wrangler types
+1. Generates Wrangler types (`worker-configuration.d.ts`)
 2. Type-checks the Astro project
 3. Builds the site for production
 
 ### Preview
 
-**Using npm:**
 ```bash
-npm run preview
+bun run preview
 ```
 
-**Using bun:**
+This runs `wrangler types && astro preview` to preview the built site locally using the Cloudflare `workerd` runtime.
+
+### Deploy
+
 ```bash
-bun run preview:bun
+bun run deploy
 ```
 
-This runs `wrangler types && astro preview` to preview the built site locally.
+This builds and deploys to Cloudflare Workers via `astro build && wrangler deploy`.
 
 ### Astro CLI
 
-The `astro` command provides direct access to the Astro CLI. Common commands:
-
-**Using npm:**
 ```bash
-npm run astro [command]
+bunx astro [command]
 # Examples:
-npm run astro dev          # Start dev server
-npm run astro build        # Build for production
-npm run astro preview      # Preview production build
-npm run astro check        # Type-check the project
-npm run astro sync         # Sync Astro types
+bunx astro dev          # Start dev server
+bunx astro build        # Build for production
+bunx astro preview      # Preview production build
+bunx astro check        # Type-check the project
+bunx astro sync         # Sync Astro types
 ```
 
-**Using bun:**
-```bash
-npx astro [command]
-# Examples:
-npx astro dev          # Start dev server
-npx astro build        # Build for production
-npx astro preview      # Preview production build
-npx astro check        # Type-check the project
-npx astro sync         # Sync Astro types
-```
-
-**Note:** When using bun, use `npx` instead of `bunx` for Astro commands to avoid module resolution issues. The scripts in `package.json` already include `wrangler types` before Astro commands, so using `npm run dev` or `bun run dev:bun` is recommended over running `astro dev` directly.
+**Note:** The scripts in `package.json` already include `wrangler types` before Astro commands, so using `bun run dev` is recommended over running `bunx astro dev` directly.
 
 ## Linting
 
@@ -110,12 +69,12 @@ This project uses Biome for linting and formatting.
 
 **Check code style:**
 ```bash
-npx @biomejs/biome check .
+bunx @biomejs/biome check .
 ```
 
 **Automatically fix issues:**
 ```bash
-npx @biomejs/biome check --apply .
+bunx @biomejs/biome check --apply .
 ```
 
 ## Code Style
@@ -135,20 +94,23 @@ npx @biomejs/biome check --apply .
 - `/src/content` - Content collections (MDX files)
 - `/src/layouts` - Page layouts
 - `/public` - Static assets
+- `/package` - Custom "spectre" Astro integration
 
 ## Configuration
 
 ### Astro Configuration (`astro.config.ts`)
 
+- **Framework:** Astro 6 (beta)
 - **Site URL:** `https://zacbowling.com`
 - **Output Mode:** `server` (SSR with Cloudflare adapter)
-- **Adapter:** `@astrojs/cloudflare` (Cloudflare Workers/Pages)
+- **Adapter:** `@astrojs/cloudflare` (Cloudflare Workers)
+- **Image Service:** `compile` (Sharp at build time for prerendered pages)
 
 **Integrations:**
 - `astro-expressive-code` - Code block syntax highlighting with "dark-plus" theme
 - `@astrojs/mdx` - MDX support for content files
 - `@astrojs/sitemap` - Automatic sitemap generation
-- `spectre` (custom) - Custom integration with:
+- `spectre` (custom, in `/package`) - Custom integration with:
   - Name: "Zac Bowling"
   - OpenGraph configuration for home, blog, and projects pages
 
@@ -173,15 +135,13 @@ npx @biomejs/biome check --apply .
 ### Wrangler Configuration (`wrangler.jsonc`)
 
 - **Name:** `zacbowling`
-- **Compatibility Date:** `2025-03-25`
+- **Main:** `@astrojs/cloudflare/entrypoints/server` (Cloudflare Workers entrypoint)
+- **Compatibility Date:** `2026-02-05`
 - **Compatibility Flags:** `["nodejs_compat"]`
 - **Observability:** Enabled
-- **Pages Build Output Directory:** `./dist`
+- **Assets:** Bound as `ASSETS` from `./dist`
 
-### Netlify Configuration (`netlify.toml`)
-
-- **Build Command:** `npm run build`
-- **Publish Directory:** `dist`
+**Deployment:** This project deploys to **Cloudflare Workers** (not Pages). Use `wrangler deploy` after building.
 
 ### Content Collections (`src/content.config.ts`)
 
@@ -225,28 +185,36 @@ The site uses Astro content collections with the following schemas:
    - `image: image`
    - `link?: string (URL)`
    - `info: array` with `text`, `icon`, and optional `link`
+9. **news** - JSON file (`src/content/news.json`) with:
+   - `id: number`
+   - `title: string`
+   - `date: date`
+   - `url: string (URL)`
+   - `publication: string`
+   - `category?: string`
+   - `description?: string`
+   - `featured?: boolean` (default: false)
 
 ### Package Manager
 
-The project specifies `pnpm@9.15.0` as the package manager, but supports both npm and bun for running scripts.
+This project uses **bun** as its package manager and runtime.
 
 ### Dependencies
 
 **Production:**
-- `@astrojs/cloudflare` - Cloudflare adapter
+- `astro` - Astro 6 framework (beta)
+- `@astrojs/cloudflare` - Cloudflare Workers adapter
 - `@astrojs/mdx` - MDX support
-- `@astrojs/netlify` - Netlify adapter (optional)
-- `@astrojs/node` - Node.js adapter (optional)
 - `@astrojs/sitemap` - Sitemap generation
+- `@astrojs/check` - Type checking
 - `@iconify-json/lucide` - Lucide icons
 - `@iconify-json/simple-icons` - Simple Icons
 - `@iconify/utils` - Icon utilities
 - `@shikijs/themes` - Shiki themes
-- `astro` - Astro framework
 - `astro-expressive-code` - Code block rendering
-- `sharp` - Image processing
+- `sharp` - Image processing (build-time only)
+- `wrangler` - Cloudflare Workers CLI
 
 **Development:**
 - `@biomejs/biome` - Linting and formatting
 - `shiki` - Syntax highlighting
-

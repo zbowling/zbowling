@@ -41,6 +41,8 @@ interface Props {
 
 const { post } = Astro.props;
 
+export const prerender = true;
+
 export const getStaticPaths = (async () => {
   const posts = await getCollection(
     "posts",
