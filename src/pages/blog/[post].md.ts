@@ -1,6 +1,8 @@
 import { getCollection } from "astro:content";
 import type { APIRoute, GetStaticPaths } from "astro";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
 	const posts = await getCollection("posts");
 

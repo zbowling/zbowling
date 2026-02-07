@@ -2,37 +2,32 @@
   "name": "zac-bowling-website",
   "type": "module",
   "version": "1.0.2",
-  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "wrangler types && astro dev",
     "start": "wrangler types && astro dev",
     "build": "wrangler types && astro check && astro build",
     "preview": "wrangler types && astro preview",
-    "astro": "astro",
-    "dev:bun": "npx wrangler types && npx wrangler pages dev ./dist",
-    "start:bun": "npx wrangler types && npx wrangler pages dev ./dist",
-    "build:bun": "npx wrangler types && npx astro check && npx astro build",
-    "preview:bun": "npx wrangler types && npx astro preview"
+    "deploy": "astro build && wrangler deploy",
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
-    "@astrojs/cloudflare": "^12.6.10",
-    "@astrojs/mdx": "^4.3.10",
-    "@astrojs/netlify": "^6.6.0",
-    "@astrojs/node": "^9.5.0",
-    "@astrojs/sitemap": "^3.6.0",
-    "@iconify-json/lucide": "^1.2.73",
-    "@iconify-json/simple-icons": "^1.2.58",
-    "@iconify/utils": "^3.0.2",
-    "@shikijs/themes": "^3.15.0",
-    "astro": "^5.15.4",
-    "astro-expressive-code": "^0.41.3",
+    "@astrojs/check": "^0.9.7-beta.1",
+    "@astrojs/cloudflare": "^13.0.0-beta.5",
+    "@astrojs/mdx": "^5.0.0-beta.5",
+    "@astrojs/sitemap": "^3.6.1-beta.3",
+    "@iconify-json/lucide": "^1.2.89",
+    "@iconify-json/simple-icons": "^1.2.69",
+    "@iconify/utils": "^3.1.0",
+    "@shikijs/themes": "^3.22.0",
+    "astro": "^6.0.0-beta.9",
+    "astro-expressive-code": "^0.41.6",
     "sharp": "^0.34.5",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.63.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@types/node": "^24.10.0",
-    "shiki": "^1.29.2"
+    "@biomejs/biome": "^2.3.14",
+    "@types/node": "^25.2.1",
+    "shiki": "^3.22.0"
   }
 }
