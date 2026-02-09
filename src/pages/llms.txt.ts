@@ -2,7 +2,8 @@ import { getCollection, getEntry } from "astro:content";
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async ({ site }) => {
-	const posts = await getCollection("posts");
+	let posts: Awaited<ReturnType<typeof getCollection>> = [];
+	try { posts = await getCollection("posts"); } catch {}
 	const projects = await getCollection("projects");
 	const newsCollection = await getCollection("news");
 	const workExperience = await getCollection("workExperience");
@@ -14,6 +15,15 @@ export const GET: APIRoute = async ({ site }) => {
 
 	let content = `# Zac Bowling\n\n`;
 	content += `Software engineer, political activist, affordable housing advocate. Alameda, CA. ${siteUrl}\n\n`;
+
+	content += `## Site Pages\n\n`;
+	content += `- [Home](${siteUrl})\n`;
+	content += `- [Engineering](${siteUrl}engineering) - Tech career, work experience, patents\n`;
+	content += `- [Advocacy](${siteUrl}advocacy) - Housing advocacy, civic leadership, political engagement\n`;
+	content += `- [Media & Content](${siteUrl}media) - Content creation, press coverage, public appearances\n`;
+	content += `- [Blog](https://sub.zacbowling.com/) - Substack blog\n`;
+	content += `- [Projects](https://zbowling.github.io) - Open source projects\n`;
+	content += `\n`;
 
 	// About
 	if (about) {
@@ -44,11 +54,12 @@ export const GET: APIRoute = async ({ site }) => {
 	// Blog Posts
 	if (posts.length > 0) {
 		content += `## Blog Posts\n\n`;
+		content += `Blog is hosted on Substack: https://sub.zacbowling.com/\n\n`;
 		posts
 			.filter((post) => !post.data.draft)
 			.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime())
 			.forEach((post) => {
-				content += `- [${post.data.title}](/blog/${post.id}.md) - ${post.data.description} (${post.data.createdAt.toLocaleDateString()})\n`;
+				content += `- ${post.data.title} - ${post.data.description} (${post.data.createdAt.toLocaleDateString()})\n`;
 			});
 		content += `\n`;
 	}
@@ -56,11 +67,12 @@ export const GET: APIRoute = async ({ site }) => {
 	// Projects
 	if (projects.length > 0) {
 		content += `## Projects\n\n`;
+		content += `Projects are hosted at: https://zbowling.github.io\n\n`;
 		projects
 			.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 			.forEach((project) => {
 				const link = project.data.link ? ` [${project.data.link}](${project.data.link})` : "";
-				content += `- [${project.data.title}](/projects/${project.id}.md) - ${project.data.description}${link} (${project.data.date.toLocaleDateString()})\n`;
+				content += `- ${project.data.title} - ${project.data.description}${link} (${project.data.date.toLocaleDateString()})\n`;
 			});
 		content += `\n`;
 	}

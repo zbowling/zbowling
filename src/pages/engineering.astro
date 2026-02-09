@@ -1,0 +1,198 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import SectionHeader from "../components/SectionHeader.astro";
+import Timeline from "../components/Timeline.astro";
+import Icon from "../components/Icon.astro";
+
+const workExperience = await getCollection("workExperience");
+
+// Split into tech roles and civic roles
+const techRoles = workExperience.filter(
+  (w) => ![3, 4].includes(w.data.id)
+);
+
+const specializations = [
+  { label: "Operating systems & compiler development", icon: "cpu" as const },
+  { label: "AI/ML infrastructure & tooling", icon: "brain" as const },
+  { label: "Rust, Swift, C/C++, Zig, Python", icon: "code" as const },
+  { label: "Cross-platform (desktop, embedded, mobile)", icon: "monitor-smartphone" as const },
+  { label: "Security & performance optimization", icon: "shield" as const },
+  { label: "Developer evangelism & community", icon: "users" as const },
+];
+---
+
+<Layout
+  title="Engineering"
+  description="Two decades of software engineering: operating systems, compilers, AI infrastructure, and startups."
+>
+  <!-- Hero -->
+  <section class="relative bg-dark overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;40&quot; height=&quot;40&quot; viewBox=&quot;0 0 40 40&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot; fill-rule=&quot;evenodd&quot;%3E%3Cpath d=&quot;M0 40L40 0H20L0 20M40 40V20L20 40&quot;/%3E%3C/g%3E%3C/svg%3E');"></div>
+    <div class="container-narrow relative z-10 py-20 md:py-28">
+      <span class="overline text-gold block mb-4 reveal">Engineering</span>
+      <h1 class="text-text-inverse m-0 mb-6 max-w-3xl reveal reveal-delay-1">
+        Building systems that shape how people compute
+      </h1>
+      <p class="text-xl text-text-muted max-w-2xl m-0 reveal reveal-delay-2">
+        Over 20 years of engineering across operating systems, compilers, AI infrastructure, and startups.
+        From bare-metal to the cloud, from TI calculators to Meta's VR headsets.
+      </p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  </section>
+
+  <!-- Current & Narrative -->
+  <section class="section bg-ivory">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
+        <!-- Main narrative -->
+        <div class="lg:col-span-3 reveal">
+          <SectionHeader
+            overline="Current"
+            title="Staff AI Software Engineer at Meta"
+          />
+          <div class="prose">
+            <p>
+              I'm currently at <strong>Meta</strong>, where I'm spearheading the development of AI-powered developer tools
+              at Reality Labs for Horizon OS, Quest VR, and wearables.
+            </p>
+            <p>
+              Prior to Meta, I worked at <strong>Modular</strong> on AI software and high-performance machine learning infrastructure.
+              Before that, I spent eight years as part of Google's <strong>Fuchsia OS</strong> project, where I worked on system libraries,
+              drivers, toolchains, and a new Bluetooth stack. I helped enable Apple's Swift programming language to run natively on Fuchsia
+              (<a href="https://www.theverge.com/2017/11/20/16679342/google-fuchsia-os-swift-language-support" target="_blank" rel="noopener noreferrer">The Verge</a>).
+            </p>
+            <p>
+              I'm a former startup founder and have held senior engineering positions at several technology companies, including
+              <strong>Apportable</strong> (acquired by Google), <strong>SeatMe</strong> (acquired by Yelp), <strong>doubleTwist</strong>,
+              <strong>Texas Instruments</strong>, and <strong>Match.com</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Specializations sidebar -->
+        <div class="lg:col-span-2 reveal reveal-delay-2">
+          <h3 class="font-display text-lg text-text m-0 mb-6">Specializations</h3>
+          <ul class="list-none m-0 p-0 flex flex-col gap-4">
+            {specializations.map((spec) => (
+              <li class="flex items-start gap-3">
+                <Icon type="lucide" name={spec.icon} width={18} height={18} class="text-forest mt-0.5 shrink-0" />
+                <span class="text-sm text-text-secondary">{spec.label}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Projects CTA -->
+          <div class="mt-10 p-6 border border-border bg-cream">
+            <h3 class="font-display text-lg text-text m-0 mb-2">Open Source & Projects</h3>
+            <p class="text-sm text-text-secondary m-0 mb-4">
+              View my open source contributions, side projects, and code on GitHub.
+            </p>
+            <a
+              href="https://zbowling.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-forest text-sm font-medium no-underline hover:text-forest-light transition-colors"
+            >
+              Visit zbowling.github.io
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Patents -->
+  <section class="section-sm bg-cream">
+    <div class="container-narrow">
+      <SectionHeader overline="Intellectual Property" title="Patents" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="p-8 border border-border bg-surface reveal">
+          <div class="flex items-center gap-2 mb-4">
+            <Icon type="lucide" name="file-text" width={18} height={18} class="text-gold" />
+            <span class="text-xs font-semibold text-gold uppercase tracking-wider">U.S. Patent 10,133,542</span>
+          </div>
+          <h3 class="font-display text-xl text-text m-0 mb-3">Modification of Distracting Sounds</h3>
+          <p class="text-sm text-text-secondary m-0 mb-4">
+            Developed during my time at Google to intelligently filter distracting noises from audio streams.
+          </p>
+          <a
+            href="https://patents.google.com/patent/US10133542B2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-forest text-sm font-medium no-underline hover:text-forest-light transition-colors"
+          >
+            View patent &rarr;
+          </a>
+        </div>
+
+        <div class="p-8 border border-border bg-surface reveal reveal-delay-1">
+          <div class="flex items-center gap-2 mb-4">
+            <Icon type="lucide" name="file-text" width={18} height={18} class="text-gold" />
+            <span class="text-xs font-semibold text-gold uppercase tracking-wider">U.S. Patent Application 20130024273</span>
+          </div>
+          <h3 class="font-display text-xl text-text m-0 mb-3">Restaurant Management & Reservation Systems</h3>
+          <p class="text-sm text-text-secondary m-0 mb-4">
+            Developed at SeatMe to streamline restaurant operations and customer interactions.
+          </p>
+          <a
+            href="https://patents.google.com/patent/US20130024273A1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-forest text-sm font-medium no-underline hover:text-forest-light transition-colors"
+          >
+            View patent &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Timeline -->
+  <section class="section bg-ivory">
+    <div class="container-narrow">
+      <SectionHeader
+        overline="Career"
+        title="Work experience"
+        description="A timeline of roles spanning from early ISP engineering to leading AI teams at Meta."
+      />
+      <div class="max-w-3xl">
+        <Timeline
+          entries={techRoles.map((w) => ({
+            title: w.data.title,
+            company: w.data.company,
+            duration: w.data.duration,
+            description: w.data.description,
+          }))}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun facts -->
+  <section class="dark-section section-sm">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="reveal">
+          <div class="font-display text-5xl text-text-inverse mb-2">140+</div>
+          <div class="text-gold text-sm font-medium mb-2">Hackathons</div>
+          <p class="text-text-muted text-sm m-0">Competed in over 140 hackathons from 2008 to 2013.</p>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="font-display text-5xl text-text-inverse mb-2">2</div>
+          <div class="text-gold text-sm font-medium mb-2">Patents</div>
+          <p class="text-text-muted text-sm m-0">Granted U.S. patents in audio processing and restaurant technology.</p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="font-display text-5xl text-text-inverse mb-2">20+</div>
+          <div class="text-gold text-sm font-medium mb-2">Years</div>
+          <p class="text-text-muted text-sm m-0">Two decades of professional software engineering experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

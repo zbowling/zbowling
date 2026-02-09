@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+import Icon from "./Icon.astro";
+
+const socials = await getCollection("socials");
+
+// Key social links to feature prominently
+const featuredSocialIds = [1, 2, 3, 4, 5, 6, 9]; // LinkedIn, GitHub, X, TikTok, YouTube, Bluesky, Email
+const featuredSocials = socials.filter((s) => featuredSocialIds.includes(s.data.id));
+const otherSocials = socials.filter((s) => !featuredSocialIds.includes(s.data.id));
+---
+
+<footer class="bg-dark text-text-inverse mt-auto">
+  <div class="container-narrow py-16 md:py-24">
+    <!-- Top section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <h2 class="font-display text-2xl md:text-3xl text-text-inverse mb-4">Zac Bowling</h2>
+        <p class="text-text-muted text-sm leading-relaxed max-w-xs">
+          Software engineer, housing advocate, and content creator based in Alameda, California.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="overline text-gold mb-4 text-xs">Navigate</h3>
+        <ul class="list-none m-0 p-0 flex flex-col gap-2.5">
+          <li><a href="/" class="text-text-muted hover:text-text-inverse text-sm transition-colors no-underline">Home</a></li>
+          <li><a href="/engineering" class="text-text-muted hover:text-text-inverse text-sm transition-colors no-underline">Engineering</a></li>
+          <li><a href="/advocacy" class="text-text-muted hover:text-text-inverse text-sm transition-colors no-underline">Advocacy</a></li>
+          <li><a href="/media" class="text-text-muted hover:text-text-inverse text-sm transition-colors no-underline">Media & Content</a></li>
+          <li><a href="https://sub.zacbowling.com/" target="_blank" rel="noopener noreferrer" class="text-text-muted hover:text-text-inverse text-sm transition-colors no-underline">Blog &#8599;</a></li>
+          <li><a href="https://zbowling.github.io" target="_blank" rel="noopener noreferrer" class="text-text-muted hover:text-text-inverse text-sm transition-colors no-underline">Projects &#8599;</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div>
+        <h3 class="overline text-gold mb-4 text-xs">Connect</h3>
+        <div class="flex flex-wrap gap-3">
+          {featuredSocials.map((social) => (
+            <a
+              href={social.data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center w-10 h-10 rounded-full border border-border-dark text-text-muted hover:text-text-inverse hover:border-text-muted transition-all duration-200 no-underline"
+              title={social.data.text}
+            >
+              <Icon
+                type={social.data.icon.type}
+                name={social.data.icon.name as any}
+                width={18}
+                height={18}
+              />
+            </a>
+          ))}
+        </div>
+
+        <!-- Expanded links -->
+        <div class="mt-6 flex flex-wrap gap-x-4 gap-y-1.5">
+          {otherSocials.map((social) => (
+            <a
+              href={social.data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-text-muted hover:text-text-inverse text-xs transition-colors no-underline"
+            >
+              {social.data.text}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-16 pt-8 border-t border-border-dark flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-text-muted text-xs m-0">
+        &copy; {new Date().getFullYear()} Zac Bowling. All rights reserved.
+      </p>
+      <div class="flex gap-4 text-xs">
+        <a href="/llms.txt" class="text-text-muted hover:text-text-inverse transition-colors no-underline">llms.txt</a>
+        <a href="/sitemap-index.xml" class="text-text-muted hover:text-text-inverse transition-colors no-underline">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

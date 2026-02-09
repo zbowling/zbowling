@@ -2,7 +2,8 @@ import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async () => {
-	const posts = await getCollection("posts");
+	let posts: Awaited<ReturnType<typeof getCollection>> = [];
+	try { posts = await getCollection("posts"); } catch {}
 	const projects = await getCollection("projects");
 	const cards = await getCollection("cards");
 	const other = await getCollection("other");
