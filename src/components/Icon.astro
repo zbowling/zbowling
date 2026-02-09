@@ -54,6 +54,12 @@ const body = replaceIDs(renderData.body);
 let renderAttribsHTML =
 	body.indexOf('xlink:') === -1 ? '' : ' xmlns:xlink="http://www.w3.org/1999/xlink"';
 
+// Apply viewBox and other SVG attributes from iconToSVG first
+for (const attr in renderData.attributes) {
+	renderAttribsHTML += ` ${attr}="${renderData.attributes[attr]}"`;
+}
+
+// Then apply user-provided attributes (overriding defaults like width/height)
 for (const attr in attributes) {
 	renderAttribsHTML += ` ${attr}="${attributes[attr]}"`;
 }

@@ -1,363 +1,135 @@
 ---
 import { name } from "spectre:globals";
-import Icon from "./Icon.astro";
 
 const path = Astro.url.pathname;
+
+const navItems = [
+  { label: "Engineering", href: "/engineering" },
+  { label: "Advocacy", href: "/advocacy" },
+  { label: "Media", href: "/media" },
+  { label: "Blog", href: "https://sub.zacbowling.com/", external: true },
+  { label: "Projects", href: "https://zbowling.github.io", external: true },
+];
 ---
-<nav>
-  <a class="site-title" href="/">{name}</a>
-  <ul>
-    <li>
-      <a href="https://sub.zacbowling.com/">Blog</a>
-    </li>
-    <li class="nav-separator">/</li>
-    <li>
-      <a href="https://vote2024.zacbowling.com/">Vote</a>
-    </li>
-    <li class="nav-separator">/</li>
-    <li>
-      <a href="/projects" class:list={{ active: path === '/projects' }}>Projects</a>
-    </li>
-  </ul>
-  <button class="mobile-nav-toggle">
-    <Icon type="lucide" name="menu" width={24} height={24} class="menu-closed" />
-    <Icon type="lucide" name="x" width={24} height={24} class="menu-open" />
-  </button>
-</nav>
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="site-header">
+  <nav class="container-narrow flex items-center justify-between h-16 md:h-20">
+    <!-- Logo -->
+    <a
+      href="/"
+      class="font-display text-xl md:text-2xl text-text no-underline hover:text-forest transition-colors tracking-tight"
+    >
+      {name}
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex items-center gap-1 list-none m-0 p-0">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              "inline-block px-3 py-1.5 text-sm font-medium tracking-wide no-underline transition-colors duration-200",
+              path === item.href
+                ? "text-forest"
+                : "text-text-secondary hover:text-text",
+            ]}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
+          >
+            {item.label}
+            {item.external && (
+              <span class="inline-block ml-0.5 text-text-muted text-xs">&#8599;</span>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile Toggle -->
+    <button
+      class="md:hidden flex items-center justify-center w-10 h-10 text-text"
+      id="mobile-toggle"
+      aria-label="Toggle navigation"
+    >
+      <svg class="menu-open-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="4" y1="7" x2="20" y2="7" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="17" x2="20" y2="17" />
+      </svg>
+      <svg class="menu-close-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="6" y1="6" x2="18" y2="18" />
+        <line x1="6" y1="18" x2="18" y2="6" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden overflow-hidden transition-all duration-500 ease-out max-h-0 opacity-0 bg-ivory" id="mobile-menu">
+    <div class="container-narrow pb-8 pt-2">
+      <ul class="list-none m-0 p-0 flex flex-col gap-0">
+        {navItems.map((item, i) => (
+          <li class="border-b border-border">
+            <a
+              href={item.href}
+              class:list={[
+                "block py-4 text-lg no-underline transition-colors",
+                path === item.href
+                  ? "text-forest font-medium"
+                  : "text-text-secondary hover:text-text",
+              ]}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+            >
+              {item.label}
+              {item.external && (
+                <span class="inline-block ml-1 text-text-muted text-sm">&#8599;</span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer for fixed header -->
+<div class="h-16 md:h-20"></div>
+
 <script is:inline>
-  const searchElement = document.querySelector('#search');
-  const results = document.querySelector('#search-results');
-  const navToggle = document.querySelector('.mobile-nav-toggle');
-
-  let focusIndex = -1;
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'k' && e.ctrlKey) {
-      searchElement.focus();
-    }
-
-    if (e.key === 'Escape') {
-      searchElement.blur();
-      results.classList.remove('active');
-      focusIndex = -1;
-    }
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-
-      focusIndex++;
-      const results = document.querySelectorAll('#search-results a');
-
-      if (focusIndex >= results.length) {
-        focusIndex = 0;
-      }
-
-      results[focusIndex]?.focus();
-    }
-
-    if (e.key === 'ArrowUp') {
-      e.preventDefault();
-
-      focusIndex--;
-      const results = document.querySelectorAll('#search-results a');
-
-      if (focusIndex < 0) {
-        focusIndex = results.length - 1;
-      }
-
-      results[focusIndex]?.focus();
-    }
-  });
-
-  searchElement?.addEventListener('focus', () => {
-    searchElement.placeholder = '';
-    results.classList.add('active');
-  });
-
-  searchElement?.addEventListener('blur', () => {
-    searchElement.placeholder = 'Search (Ctrl+K)';
-  });
-
-  searchElement?.addEventListener('blur', () => {
-    setTimeout(() => {
-      if (!document.activeElement?.closest('#search-results')) {
-        results.classList.remove('active');
-        focusIndex = -1;
-      }
-    }, 1);
-  });
-
-  results?.addEventListener('focusout', (e) => {
-    if (!e.relatedTarget?.closest('#search-results')) {
-      results.classList.remove('active');
-      focusIndex = -1;
-    }
-  });
-
-  searchElement?.addEventListener('input', async (e) => {
-    if (e.target.dataset.loaded !== 'true') {
-      e.target.dataset.loaded = 'true';
-
-      window.pagefind = await import("/pagefind/pagefind.js");
-    }
-
-    results.innerHTML = '';
-
-    const search = await window.pagefind.search(e.target.value);
-
-    let i = 0;
-    for (const result of search.results) {
-      i++;
-
-      const data = await result.data();
-      
-      results.innerHTML += `
-        <a href="${data.url}">
-          <h3 class="no-mt">${data.meta.title}</h3>
-          <p>${data.excerpt}</p>
-        </a>
-        ${i < search.results.length ? '<hr class="separator">' : ''}
-      `;
-    }
-
-    if (search.results.length === 0 && e.target.value.length > 0) {
-      results.innerHTML = '<p style="margin-top: 0;">No results found</p>';
-    }
-
-    results.classList.add('active');
-  });
-
-  navToggle?.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    document.querySelector('nav').classList.toggle('active');
-  });
-
-  const handleTabletChange = () => {
-    if (window.matchMedia('(max-width: 640px)').matches) {
-      searchElement.placeholder = 'Search';
+  // Header background on scroll
+  const header = document.getElementById('site-header');
+  const handleScroll = () => {
+    if (window.scrollY > 20) {
+      header.classList.add('bg-ivory/95', 'backdrop-blur-md', 'border-b', 'border-border');
     } else {
-      searchElement.placeholder = 'Search (Ctrl+K)';
+      header.classList.remove('bg-ivory/95', 'backdrop-blur-md', 'border-b', 'border-border');
     }
-  }
+  };
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 
-  document.addEventListener('DOMContentLoaded', handleTabletChange);
-  document.addEventListener('resize', handleTabletChange);
+  // Mobile menu toggle
+  const toggle = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const openIcon = toggle.querySelector('.menu-open-icon');
+  const closeIcon = toggle.querySelector('.menu-close-icon');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.contains('max-h-screen');
+    if (isOpen) {
+      menu.classList.remove('max-h-screen', 'opacity-100');
+      menu.classList.add('max-h-0', 'opacity-0');
+      openIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      header.classList.remove('bg-ivory', 'border-b', 'border-border');
+      handleScroll();
+    } else {
+      menu.classList.remove('max-h-0', 'opacity-0');
+      menu.classList.add('max-h-screen', 'opacity-100');
+      openIcon.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+      header.classList.add('bg-ivory', 'border-b', 'border-border');
+    }
+  });
 </script>
-<style>
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Geist Mono', monospace;
-    z-index: 50;
-  }
-
-  .site-title {
-    font-weight: 800;
-    text-decoration: none;
-    font-size: 1.25em;
-    z-index: 2;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    align-items: center;
-  }
-
-  nav ul li {
-    position: relative;
-  }
-
-  nav a {
-    color: inherit;
-    text-decoration: none;
-    padding: .25rem .5rem;
-  }
-
-  nav a:hover, nav a:focus-visible, nav a.active {
-    background-color: var(--primary);
-    outline: none;
-  }
-
-  #search {
-    background: none;
-    border: none;
-    outline: none;
-    padding: .25rem .5rem;
-    width: 160px;
-  }
-
-  #search::placeholder {
-    color: white;
-  }
-
-  #search:focus {
-    background-color: var(--primary);
-  }
-
-  #search-results {
-    position: absolute;
-    top: calc(100% + .5rem);
-    right: 0;
-    background-color: #252525;
-    border: 1px solid var(--primary);
-    display: none;
-    width: 200%;
-    z-index: 10;
-    padding: .5rem;
-  }
-
-  #search-results.active:has(*) {
-    display: block;
-  }
-
-  .mobile-nav-toggle {
-    display: none;
-    width: 40px;
-    height: 40px;
-    background-color: #121212;
-    border: 1px solid #353535;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-  }
-
-  .menu-open {
-    display: none;
-  }
-
-  .mobile-nav-toggle.active .menu-open {
-    display: flex;
-  }
-
-  .mobile-nav-toggle.active .menu-closed {
-    display: none;
-  }
-
-  @media screen and (max-width: 640px) {
-    nav {
-      padding: 0 1rem;
-      padding-top: 1rem;
-      transition: all .25s ease;
-    }
-
-    .mobile-nav-toggle {
-      display: flex;
-    }
-
-    .nav-separator {
-      display: none;
-    }
-
-    nav ul {
-      flex-direction: column;
-      gap: 0;
-      position: absolute;
-      width: 100%;
-      top: calc(1rem + 40px);
-      right: 0;
-      padding: 1rem;
-      z-index: 1;
-      opacity: 0;
-      pointer-events: none;
-      transition: all .25s ease;
-      user-select: none;
-      height: calc(100vh - 1rem - 40px);
-      align-items: start;
-    }
-
-    nav.active {
-      background-color: #181818;
-    }
-
-    nav.active ul {
-      opacity: 1;
-      pointer-events: all;
-      background-color: #181818;
-    }
-
-    nav ul li {
-      position: relative;
-      transition: all .25s ease-out;
-      top: -1.5rem;
-      border-bottom: 1px solid #353535;
-      width: 100%;
-      max-width: none;
-      padding: 0;
-      font-size: 1.125em;
-    }
-  
-    nav ul li a {
-      display: block;
-      padding: .75rem 0;
-      width: 100%;
-      padding-left: 1rem;
-    }
-
-    nav ul li:first-child {
-      border-top: 1px solid #353535;
-    }
-
-    nav.active ul li {
-      top: 0;
-    }
-
-    #search {
-      width: 100%;
-      max-width: none;
-      padding: .75rem 1rem;
-    }
-
-    #search-results {
-      width: 100%;
-      top: 100%;
-      font-size: 0.875em;
-    }
-  }
-</style>
-<style is:global>
-  #search-results a {
-    display: block;
-    text-decoration: none;
-    color: white !important;
-    padding: .5rem;
-  }
-
-  #search-results a:hover, #search-results a:focus-visible {
-    background-color: var(--primary);
-    outline: none;
-  }
-
-  #search-results a:hover mark, #search-results a:focus-visible mark {
-    background-color: #ffffff;
-    color: #000000;
-  }
-
-  #search-results a h3 {
-    margin-bottom: .5rem;
-  }
-
-  #search-results a p {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  #search-results mark {
-    background-color: var(--primary);
-    color: white;
-  }
-
-  .separator {
-    margin: .5rem .5rem;
-    border: none;
-    height: 1px;
-    background-color: #353535;
-  }
-</style>

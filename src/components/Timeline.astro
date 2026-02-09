@@ -1,0 +1,44 @@
+---
+interface TimelineEntry {
+  title: string;
+  company: string;
+  duration: string;
+  description: string;
+}
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="relative">
+  <!-- Vertical line -->
+  <div class="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-border" aria-hidden="true"></div>
+
+  <div class="flex flex-col gap-0">
+    {entries.map((entry, i) => (
+      <div class:list={["relative pl-12 md:pl-16 py-8 group reveal", `reveal-delay-${Math.min(i + 1, 5)}`]}>
+        <!-- Dot -->
+        <div class="absolute left-2.5 md:left-4.5 top-9 w-3 h-3 rounded-full border-2 border-forest bg-ivory group-hover:bg-forest transition-colors duration-300" aria-hidden="true"></div>
+
+        <!-- Duration -->
+        <span class="text-sm text-text-muted font-medium tracking-wide block mb-1.5">
+          {entry.duration}
+        </span>
+
+        <!-- Title & Company -->
+        <h3 class="font-display text-xl md:text-2xl text-text m-0 leading-snug">
+          {entry.title}
+        </h3>
+        <p class="text-forest font-medium text-sm mt-1 mb-3">{entry.company}</p>
+
+        <!-- Description -->
+        <p class="text-text-secondary text-sm leading-relaxed m-0 max-w-xl">
+          {entry.description}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>

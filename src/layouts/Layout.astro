@@ -1,49 +1,55 @@
 ---
-import '../styles/reset.css';
-import '../styles/globals.css';
-
-import Background from '../components/Background.astro';
+import '../styles/app.css';
 import Navbar from '../components/Navbar.astro';
-import LayoutGrid from '../components/LayoutGrid.astro';
-import { name, themeColor, twitterHandle } from 'spectre:globals';
+import Footer from '../components/Footer.astro';
+import { name, themeColor } from 'spectre:globals';
 
 interface Props {
 	title: string;
 	description?: string;
 	image?: ImageMetadata;
-	pagefindIgnore?: boolean;
 	article?: {
 		createdAt: Date;
 		updatedAt?: Date;
 	};
 }
 
-const { title, description, image, pagefindIgnore, article } = Astro.props;
+const { title, description, image, article } = Astro.props;
+const siteTitle = title === name ? title : `${title} — ${name}`;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>{title}</title>
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap"
+			rel="stylesheet"
+		/>
+
+		<title>{siteTitle}</title>
 		{description && <meta name="description" content={description} />}
-		<meta name="theme-color" content={themeColor}>
+		<meta name="theme-color" content={themeColor} />
 
-		<link rel="canonical" href={Astro.site} />
+		<link rel="canonical" href={Astro.url} />
 
-		<meta name="og:title" content={title} />
-		{description && <meta name="og:description" content={description} />}
-		<meta name="og:image" content={image?.src || '/img/og.png'} />
-		<meta name="og:url" content={Astro.site} />
-		{!article && <meta name="og:type" content="website" />}
-		<meta name="og:locale" content="en" />
+		<!-- Open Graph -->
+		<meta property="og:title" content={siteTitle} />
+		{description && <meta property="og:description" content={description} />}
+		<meta property="og:image" content={image?.src || '/favicon.svg'} />
+		<meta property="og:url" content={Astro.url} />
+		{!article && <meta property="og:type" content="website" />}
+		<meta property="og:locale" content="en" />
 
 		{article && (
-			<meta name="og:type" content="article" />
+			<meta property="og:type" content="article" />
 			<meta property="article:published_time" content={article.createdAt.toISOString()} />
 			<meta name="author" content={name} />
 		)}
@@ -52,29 +58,45 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 			<meta property="article:modified_time" content={article.updatedAt.toISOString()} />
 		)}
 
+		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
-		{twitterHandle && (
-			<meta name="twitter:site" content={twitterHandle} />
-			<meta name="twitter:creator" content={twitterHandle} />
-		)}
-		<meta name="twitter:title" content={title} />
+		<meta name="twitter:title" content={siteTitle} />
 		{description && <meta name="twitter:description" content={description} />}
-		<meta name="twitter:image" content={image?.src || '/img/og.png'} />
+		<meta name="twitter:image" content={image?.src || '/favicon.svg'} />
 
-		<link rel="manifest" href="/site.webmanifest">
-		<meta name="msapplication-navbutton-color" content="#000000">
-        <meta name="theme-color" content="#000000">
+		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 	</head>
-	<body>
-		<main data-pagefind-ignore={pagefindIgnore}>
-			<Navbar />
-			<LayoutGrid>
-				<slot name="left" slot="left" />
-				<slot name="right" slot="right" />
-			</LayoutGrid>
-			<slot name="404" />
+	<body class="bg-ivory text-text min-h-screen flex flex-col">
+		<Navbar />
+		<main class="flex-1">
+			<slot />
 		</main>
-		<Background />
+		<Footer />
+
+		<!-- Scroll reveal observer -->
+		<script is:inline>
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('visible');
+						}
+					});
+				},
+				{ threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+			);
+
+			document.querySelectorAll('.reveal').forEach((el) => {
+				observer.observe(el);
+			});
+
+			// Re-observe on page transitions
+			document.addEventListener('astro:page-load', () => {
+				document.querySelectorAll('.reveal:not(.visible)').forEach((el) => {
+					observer.observe(el);
+				});
+			});
+		</script>
 	</body>
 </html>

@@ -1,0 +1,29 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<div class="bg-dark py-10 md:py-14">
+  <div class="container-narrow">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      {stats.map((stat, i) => (
+        <div class:list={["text-center reveal", `reveal-delay-${i + 1}`]}>
+          <div class="font-display text-4xl md:text-5xl text-text-inverse mb-2">
+            {stat.value}
+          </div>
+          <div class="text-text-muted text-sm tracking-wide uppercase font-medium">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

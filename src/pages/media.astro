@@ -1,0 +1,191 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import SectionHeader from "../components/SectionHeader.astro";
+import NewsGrid from "../components/NewsGrid.astro";
+const news = await getCollection("news");
+const sortedNews = news.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const platforms = [
+  {
+    name: "TikTok",
+    handle: "@YesInMyBackyard",
+    url: "https://tiktok.com/@YesInMyBackyard",
+    stat: "100K+",
+    statLabel: "Followers",
+    description: "Urbanist content about housing policy, zoning, and city planning.",
+  },
+  {
+    name: "YouTube",
+    handle: "@YesInMyBackyard",
+    url: "https://www.youtube.com/@YesInMyBackyard",
+    stat: "36K+",
+    statLabel: "Subscribers",
+    description: "Long-form videos on urbanism, housing, and community issues.",
+  },
+];
+
+const appearances = [
+  {
+    outlet: "Wired",
+    title: "The Hackathon Is On",
+    url: "https://www.wired.com/2012/02/storyboard-hackathons/",
+    type: "Feature",
+  },
+  {
+    outlet: "The Verge",
+    title: "Apple Swift on Google Fuchsia OS",
+    url: "https://www.theverge.com/google/2017/11/20/16681556/apple-swift-language-google-fuchsia-os-open-source",
+    type: "Tech Coverage",
+  },
+  {
+    outlet: "9to5Google",
+    title: "The dream team behind Google's new OS",
+    url: "https://9to5google.com/2018/04/13/fuchsia-friday-the-dream-team-behind-googles-new-os/",
+    type: "Profile",
+  },
+  {
+    outlet: "San Francisco Chronicle",
+    title: "Ballot battle in Alameda over multi-unit housing",
+    url: "https://www.sfchronicle.com/bayarea/article/Ballot-battle-in-town-of-Alameda-pits-multiunit-15619564.php",
+    type: "News",
+  },
+  {
+    outlet: "DWDD University (Dutch TV)",
+    title: "International television appearance",
+    url: "https://www.imdb.com/name/nm7838510/",
+    type: "TV Appearance",
+  },
+  {
+    outlet: "Mobile World Congress",
+    title: "Tech presentation at MWC",
+    url: "#",
+    type: "Speaking",
+  },
+];
+---
+
+<Layout
+  title="Media & Content"
+  description="Content creation, press coverage, and public appearances."
+>
+  <!-- Hero -->
+  <section class="relative bg-dark overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;40&quot; height=&quot;40&quot; viewBox=&quot;0 0 40 40&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot; fill-rule=&quot;evenodd&quot;%3E%3Cpath d=&quot;M0 40L40 0H20L0 20M40 40V20L20 40&quot;/%3E%3C/g%3E%3C/svg%3E');"></div>
+    <div class="container-narrow relative z-10 py-20 md:py-28">
+      <span class="overline text-gold block mb-4 reveal">Media & Content</span>
+      <h1 class="text-text-inverse m-0 mb-6 max-w-3xl reveal reveal-delay-1">
+        Making urbanism accessible and shareable
+      </h1>
+      <p class="text-xl text-text-muted max-w-2xl m-0 reveal reveal-delay-2">
+        140,000+ subscribers across TikTok and YouTube. Featured in Wired, The Verge, SF Chronicle, and international media.
+      </p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  </section>
+
+  <!-- Content Platforms -->
+  <section class="section bg-ivory">
+    <div class="container-narrow">
+      <SectionHeader
+        overline="Content Creation"
+        title="Platforms"
+        description="Creating urbanist content that makes complex housing and city planning topics accessible to a wide audience."
+      />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {platforms.map((platform, i) => (
+          <a
+            href={platform.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+              "group block p-8 md:p-10 border border-border bg-surface no-underline card-hover reveal",
+              `reveal-delay-${i + 1}`,
+            ]}
+          >
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-display text-2xl text-text m-0 group-hover:text-forest transition-colors">{platform.name}</h3>
+              <span class="text-text-muted text-sm">{platform.handle}</span>
+            </div>
+            <div class="flex items-end gap-2 mb-4">
+              <span class="font-display text-4xl text-forest">{platform.stat}</span>
+              <span class="text-text-muted text-sm mb-1">{platform.statLabel}</span>
+            </div>
+            <p class="text-text-secondary text-sm m-0">{platform.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Notable Appearances -->
+  <section class="section-sm bg-cream">
+    <div class="container-narrow">
+      <SectionHeader overline="Highlights" title="Notable appearances" />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {appearances.map((item, i) => (
+          <a
+            href={item.url}
+            target={item.url !== "#" ? "_blank" : undefined}
+            rel={item.url !== "#" ? "noopener noreferrer" : undefined}
+            class:list={[
+              "group block p-6 border border-border bg-surface no-underline card-hover reveal",
+              `reveal-delay-${Math.min((i % 3) + 1, 3)}`,
+            ]}
+          >
+            <span class="text-xs font-semibold text-forest uppercase tracking-wider block mb-3">{item.type}</span>
+            <h3 class="font-display text-lg text-text m-0 mb-2 group-hover:text-forest transition-colors leading-snug">{item.title}</h3>
+            <span class="text-sm text-text-muted">{item.outlet}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="dark-section section-sm">
+    <div class="container-narrow">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div class="text-center reveal">
+          <div class="font-display text-4xl md:text-5xl text-text-inverse mb-2">100M+</div>
+          <div class="text-text-muted text-sm">TikTok Views</div>
+        </div>
+        <div class="text-center reveal reveal-delay-1">
+          <div class="font-display text-4xl md:text-5xl text-text-inverse mb-2">10M+</div>
+          <div class="text-text-muted text-sm">YouTube Views</div>
+        </div>
+        <div class="text-center reveal reveal-delay-2">
+          <div class="font-display text-4xl md:text-5xl text-text-inverse mb-2">140K+</div>
+          <div class="text-text-muted text-sm">Subscribers</div>
+        </div>
+        <div class="text-center reveal reveal-delay-3">
+          <div class="font-display text-4xl md:text-5xl text-text-inverse mb-2">6+</div>
+          <div class="text-text-muted text-sm">Major Outlets</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full news grid -->
+  <section class="section bg-ivory">
+    <div class="container-narrow">
+      <SectionHeader
+        overline="All Coverage"
+        title="In the news"
+        description="Complete press and media coverage archive."
+      />
+      <NewsGrid
+        items={sortedNews.map((n) => ({
+          title: n.data.title,
+          url: n.data.url,
+          publication: n.data.publication,
+          date: n.data.date,
+          description: n.data.description,
+          category: n.data.category,
+          featured: n.data.featured,
+        }))}
+        showCategory={true}
+      />
+    </div>
+  </section>
+</Layout>

@@ -1,234 +1,239 @@
 ---
-import "../styles/index.css";
-
-import ProfilePicture from "../assets/pfp.png";
-
-import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
-import ImageGlow from "../components/ImageGlow.astro";
-import Icon from "../components/Icon.astro";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import { getEntry } from "astro:content";
-import { render } from "astro:content";
-import { name, openGraph } from "spectre:globals";
+import StatsBar from "../components/StatsBar.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import NewsGrid from "../components/NewsGrid.astro";
+import Icon from "../components/Icon.astro";
 
-const [/*posts,*/ cards, projects, about, workExperience, quickInfo, socials, news] =
-  await Promise.all([
-    //getCollection('posts', (post) => post.data.draft !== true),
-    getCollection("cards"),
-    getCollection("projects"),
-    getEntry("other", "about"),
-    getCollection("workExperience"),
-    getCollection("quickInfo"),
-    getCollection("socials"),
-    getCollection("news"),
-  ]);
+import pfp from "../assets/pfp.png";
 
-// biome-ignore lint/style/noNonNullAssertion: Should always be defined.
-const { Content: About } = await render(about!);
+const news = await getCollection("news");
+const sortedNews = news
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const featuredNews = sortedNews.filter((n) => n.data.featured).slice(0, 3);
+const recentNews = featuredNews.length >= 3 ? featuredNews : sortedNews.slice(0, 6);
+
+const stats = [
+  { value: "20+", label: "Years in Tech" },
+  { value: "140K+", label: "Subscribers" },
+  { value: "2", label: "Patents" },
+  { value: "140+", label: "Hackathons" },
+];
+
+const pillars = [
+  {
+    overline: "Engineer",
+    title: "Building the future of computing",
+    description: "Staff AI Software Engineer at Meta. Previously Google Fuchsia OS, Modular, and a string of startups. Two decades shipping operating systems, compilers, and AI infrastructure.",
+    href: "/engineering",
+    icon: "cpu" as const,
+  },
+  {
+    overline: "Advocate",
+    title: "Fighting for housing and democracy",
+    description: "CA Democratic Party Executive Board member. Open Government Commissioner in Alameda. Leading YIMBY campaigns and suing state agencies over housing accountability.",
+    href: "/advocacy",
+    icon: "landmark" as const,
+  },
+  {
+    overline: "Creator",
+    title: "Making urbanism go viral",
+    description: "140K+ subscribers on TikTok and YouTube as @YesInMyBackyard. Featured in Wired, The Verge, SF Chronicle. Speaking at Mobile World Congress and Dutch national TV.",
+    href: "/media",
+    icon: "play" as const,
+  },
+];
 ---
 
 <Layout
-  title={openGraph.home.title || name}
-  description={openGraph.home.description}
-  pagefindIgnore
+  title="Zac Bowling"
+  description="Software engineer, political activist, affordable housing advocate, and community leader based in Alameda, California."
 >
-  <div class="layout-grid-left" slot="left">
-    <Card class="flex-col-card">
-      <ImageGlow
-        quality={100}
-        width={80}
-        height={80}
-        src={ProfilePicture}
-        alt="Zac Bowling smiling"
-        loading="eager"
-      />
-      <h2>{name}</h2>
-      <ul class="overview-list">
-        {
-          quickInfo.map((info) => (
-            <li>
-              <Icon
-                type={info.data.icon.type}
-                name={info.data.icon.name as any}
-                width={24}
-                height={24}
-                class="glow-icon"
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="relative bg-dark overflow-hidden">
+    <!-- Subtle texture overlay -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+    <div class="container-narrow relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center py-20 md:py-28 lg:py-36">
+        <!-- Text -->
+        <div class="order-2 lg:order-1">
+          <span class="overline text-gold block mb-6 reveal">Alameda, California</span>
+          <h1 class="text-text-inverse m-0 mb-6 reveal reveal-delay-1">
+            Zac Bowling
+          </h1>
+          <p class="text-xl md:text-2xl text-text-muted leading-relaxed m-0 mb-8 max-w-lg font-light reveal reveal-delay-2">
+            Software engineer, housing advocate, and content creator working at the intersection of technology, policy, and civic engagement.
+          </p>
+          <div class="flex flex-wrap gap-3 reveal reveal-delay-3">
+            <a href="/engineering" class="inline-flex items-center gap-2 px-5 py-2.5 bg-forest text-white text-sm font-medium tracking-wide no-underline hover:bg-forest-light transition-colors">
+              View my work
+            </a>
+            <a href="mailto:zac@zacbowling.com" class="inline-flex items-center gap-2 px-5 py-2.5 border border-border-dark text-text-muted text-sm font-medium tracking-wide no-underline hover:text-text-inverse hover:border-text-muted transition-colors">
+              Get in touch
+            </a>
+          </div>
+        </div>
+
+        <!-- Photo -->
+        <div class="order-1 lg:order-2 flex justify-center lg:justify-end reveal reveal-delay-2">
+          <div class="relative">
+            <div class="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-border-dark shadow-2xl shadow-black/30">
+              <Image
+                src={pfp}
+                alt="Zac Bowling"
+                width={320}
+                height={320}
+                class="w-full h-full object-cover"
+                quality={90}
               />
-              <span>{info.data.text}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </Card>
-    <Card>
-      <h3 class="no-mt">Socials</h3>
-      <ul class="overview-list">
-        {
-          socials.map((item) => (
-            <li>
-              <a href={item.data.link} class="socials-link">
-                <Icon
-                  type={item.data.icon.type}
-                  name={item.data.icon.name as any}
-                  width={24}
-                  height={24}
-                  class="glow-icon"
-                />
-                <span>{item.data.text}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </Card>
-  </div>
-  <div class="layout-grid-right" slot="right">
-    <Card>
-      <div class="header-container">
-        <Icon
-          type="lucide"
-          name="user"
-          width={24}
-          height={24}
-          class="glow-icon"
-        />
-        <h2>About me</h2>
-      </div>
-      <div class="prose">
-        <About />
-      </div>
-    </Card>
-    {
-      cards
-        .sort((a, b) => (a.data.index ?? 0) - (b.data.index ?? 0))
-        .map(async (card) => {
-          const { Content: CardContent } = await render(card);
-          return (
-            <Card>
-              <div class="header-container">
-                <Icon
-                  type={card.data.icon.type}
-                  name={card.data.icon.name as any}
-                  width={24}
-                  height={24}
-                  class="glow-icon"
-                />
-                <h2>{card.data.title}</h2>
-              </div>
-              <div class="prose">
-                <CardContent />
-              </div>
-            </Card>
-          );
-        })
-    }
-    <!--
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="rss" width={24} height={24} class='glow-icon' />
-				<h2>Latest Posts</h2>
-			</div>
-			<div class="content-container">
-				{posts.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime()).slice(0, 2).map((post) => (
-					<a href={`/blog/${post.id}`} class="post-container">
-						<div class="post-header">
-							<h3>{post.data.title}</h3>
-							<span class="post-date">{post.data.createdAt.toLocaleDateString()}</span>
-						</div>
-						<span>{post.data.description}</span>
-					</a>
-				))}
-			</div>
-		</Card>
-		-->
-    <Card>
-      <div class="header-container">
-        <Icon
-          type="lucide"
-          name="folder-git"
-          width={24}
-          height={24}
-          class="glow-icon"
-        />
-        <h2>Latest Projects</h2>
-      </div>
-      <div class="content-container">
-        {
-          projects
-            .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-            .slice(0, 2)
-            .map((project) => (
-              <a href={`/projects/${project.id}`} class="post-container">
-                <div class="post-header">
-                  <h3>{project.data.title}</h3>
-                  <span class="post-date">
-                    {project.data.date.toLocaleDateString()}
-                  </span>
-                </div>
-                <span>{project.data.description}</span>
-              </a>
-            ))
-        }
-      </div>
-    </Card>
-    <Card>
-      <div class="header-container">
-        <Icon
-          type="lucide"
-          name="briefcase-business"
-          width={24}
-          height={24}
-          class="glow-icon"
-        />
-        <h2>Work Experience</h2>
-      </div>
-      <div class="work-experience-container">
-        {
-          workExperience.map((entry) => (
-            <div class="work-experience-entry">
-              <span class="work-experience-duration">
-                {entry.data.duration}
-              </span>
-              <h3 class="work-experience-company">{entry.data.company}</h3>
-              <span class="work-experience-role">{entry.data.title}</span>
-              <p class="work-experience-desc">{entry.data.description}</p>
             </div>
-          ))
-        }
+            <!-- Decorative ring -->
+            <div class="absolute -inset-3 rounded-full border border-border-dark opacity-40" aria-hidden="true"></div>
+          </div>
+        </div>
       </div>
-    </Card>
-    <Card>
-      <div class="header-container">
-        <Icon
-          type="lucide"
-          name="newspaper"
-          width={24}
-          height={24}
-          class="glow-icon"
-        />
-        <h2>In The News</h2>
+    </div>
+
+    <!-- Bottom edge -->
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  </section>
+
+  <!-- ============================================
+       THREE PILLARS
+       ============================================ -->
+  <section class="section bg-ivory">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        {pillars.map((pillar, i) => (
+          <a
+            href={pillar.href}
+            class:list={[
+              "group block p-8 md:p-10 border border-border bg-surface no-underline card-hover reveal",
+              `reveal-delay-${i + 1}`,
+            ]}
+          >
+            <div class="flex items-center gap-3 mb-6">
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-cream text-forest">
+                <Icon type="lucide" name={pillar.icon} width={20} height={20} />
+              </div>
+              <span class="overline">{pillar.overline}</span>
+            </div>
+            <h3 class="font-display text-xl md:text-2xl text-text m-0 mb-4 leading-snug group-hover:text-forest transition-colors">
+              {pillar.title}
+            </h3>
+            <p class="text-text-secondary text-sm leading-relaxed m-0 mb-6">
+              {pillar.description}
+            </p>
+            <span class="inline-flex items-center gap-1 text-forest text-sm font-medium group-hover:gap-2 transition-all">
+              Learn more
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform group-hover:translate-x-0.5">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </span>
+          </a>
+        ))}
       </div>
-      <div class="content-container">
-        {
-          news
-            .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-            .map((article) => (
-              <a href={article.data.url} target="_blank" rel="noopener noreferrer" class="post-container">
-                <div class="post-header">
-                  <h3>{article.data.title}</h3>
-                  <span class="post-date">
-                    {article.data.date.toLocaleDateString()}
-                  </span>
-                </div>
-                <span class="post-meta">{article.data.publication}</span>
-                {article.data.description && (
-                  <span class="post-description">{article.data.description}</span>
-                )}
-              </a>
-            ))
-        }
+    </div>
+  </section>
+
+  <!-- ============================================
+       STATS BAR
+       ============================================ -->
+  <StatsBar stats={stats} />
+
+  <!-- ============================================
+       ABOUT
+       ============================================ -->
+  <section class="section bg-ivory">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
+        <div class="lg:col-span-3 reveal">
+          <SectionHeader
+            overline="About"
+            title="At the intersection of code, policy, and community"
+          />
+          <div class="prose">
+            <p>
+              I'm a software engineer, housing advocate, and civic leader based in Alameda, California.
+              With over two decades of experience in technology and public advocacy, I work at the intersection of
+              software engineering, open-source contributions, and grassroots political engagement.
+            </p>
+            <p>
+              By day, I'm a Staff AI Software Engineer at Meta, building the future of mixed reality. By evening,
+              I serve on the California Democratic Party Executive Board and as an Open Government Commissioner
+              for the City of Alameda. In between, I create urbanist content for 140,000+ followers on TikTok and YouTube.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 reveal reveal-delay-2">
+          <h3 class="font-display text-lg text-text m-0 mb-6">Quick Facts</h3>
+          <ul class="list-none m-0 p-0 flex flex-col gap-4">
+            <li class="flex items-start gap-3">
+              <Icon type="lucide" name="map-pin" width={18} height={18} class="text-forest mt-0.5 shrink-0" />
+              <span class="text-sm text-text-secondary">Alameda, California</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon type="lucide" name="briefcase-business" width={18} height={18} class="text-forest mt-0.5 shrink-0" />
+              <span class="text-sm text-text-secondary">Staff AI Software Engineer @ Meta</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon type="lucide" name="vote" width={18} height={18} class="text-forest mt-0.5 shrink-0" />
+              <span class="text-sm text-text-secondary">Executive Board Member @ CA Democratic Party</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon type="lucide" name="id-card" width={18} height={18} class="text-forest mt-0.5 shrink-0" />
+              <span class="text-sm text-text-secondary">Open Government Commissioner @ City of Alameda</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon type="lucide" name="video" width={18} height={18} class="text-forest mt-0.5 shrink-0" />
+              <span class="text-sm text-text-secondary">140K+ subscribers on TikTok & YouTube</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon type="lucide" name="dog" width={18} height={18} class="text-forest mt-0.5 shrink-0" />
+              <span class="text-sm text-text-secondary">Dogs: Teddy & Pickle</span>
+            </li>
+          </ul>
+        </div>
       </div>
-    </Card>
-  </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       IN THE NEWS
+       ============================================ -->
+  <section class="section-sm bg-cream">
+    <div class="container-narrow">
+      <SectionHeader
+        overline="In the News"
+        title="Press & media coverage"
+        description="Featured in national and local publications for work in technology, housing advocacy, and content creation."
+      />
+      <NewsGrid
+        items={recentNews.map((n) => ({
+          title: n.data.title,
+          url: n.data.url,
+          publication: n.data.publication,
+          date: n.data.date,
+          description: n.data.description,
+          category: n.data.category,
+          featured: n.data.featured,
+        }))}
+        showCategory={true}
+      />
+      <div class="mt-10 text-center reveal">
+        <a href="/media" class="inline-flex items-center gap-2 text-forest font-medium text-sm hover:text-forest-light transition-colors">
+          View all media coverage
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>

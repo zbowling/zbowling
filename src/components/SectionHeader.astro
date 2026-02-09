@@ -1,0 +1,33 @@
+---
+interface Props {
+  overline?: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+  dark?: boolean;
+}
+
+const { overline, title, description, align = "left", dark = false } = Astro.props;
+---
+
+<div class:list={["mb-12 md:mb-16", align === "center" && "text-center"]}>
+  {overline && (
+    <span class:list={["overline block mb-3", dark && "text-gold"]}>{overline}</span>
+  )}
+  <h2 class:list={[
+    "m-0",
+    dark ? "text-text-inverse" : "text-text",
+  ]}>
+    {title}
+  </h2>
+  {description && (
+    <p class:list={[
+      "mt-4 text-lg max-w-2xl",
+      dark ? "text-text-muted" : "text-text-secondary",
+      align === "center" && "mx-auto",
+    ]}>
+      {description}
+    </p>
+  )}
+  <span class:list={["accent-line mt-6", align === "center" && "mx-auto"]}></span>
+</div>
