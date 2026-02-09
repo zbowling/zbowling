@@ -1,14 +1,8 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
     "name": "zacbowling",
-    "main": "@astrojs/cloudflare/entrypoints/server",
     "compatibility_date": "2026-02-05",
-    "compatibility_flags": ["nodejs_compat"],
-    "observability": {
-      "enabled": true
-    },
     "assets": {
-      "binding": "ASSETS",
       "directory": "./dist"
     }
   }

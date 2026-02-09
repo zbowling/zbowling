@@ -6,12 +6,11 @@ import sitemap from "@astrojs/sitemap";
 import spectre from "./package/src";
 
 import { spectreDark } from "./src/ec-theme";
-import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://zacbowling.com",
-  output: "server",
+  output: "static",
 
   integrations: [
     expressiveCode({
@@ -37,8 +36,4 @@ export default defineConfig({
       },
     }),
   ],
-
-  adapter: cloudflare({
-    imageService: "compile",
-  }),
 });
