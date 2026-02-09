@@ -29,9 +29,9 @@ bun run build
 ```
 
 This runs `wrangler types && astro check && astro build` which:
-1. Generates Wrangler types (`worker-configuration.d.ts`)
+1. Generates Wrangler types (`worker-configuration.d.ts`) for Cloudflare bindings
 2. Type-checks the Astro project
-3. Builds the site for production
+3. Builds the static site for production
 
 ### Preview
 
@@ -39,7 +39,7 @@ This runs `wrangler types && astro check && astro build` which:
 bun run preview
 ```
 
-This runs `wrangler types && astro preview` to preview the built site locally using the Cloudflare `workerd` runtime.
+This runs `astro preview` to preview the built site locally.
 
 ### Deploy
 
@@ -47,7 +47,7 @@ This runs `wrangler types && astro preview` to preview the built site locally us
 bun run deploy
 ```
 
-This builds and deploys to Cloudflare Workers via `astro build && wrangler deploy`.
+This builds and deploys to Cloudflare Workers via `bun run build && wrangler deploy`.
 
 ### Astro CLI
 
@@ -61,7 +61,7 @@ bunx astro check        # Type-check the project
 bunx astro sync         # Sync Astro types
 ```
 
-**Note:** The scripts in `package.json` already include `wrangler types` before Astro commands, so using `bun run dev` is recommended over running `bunx astro dev` directly.
+**Note:** The `build` script in `package.json` includes `wrangler types` before Astro commands. For dev, using `bun run dev` is recommended over running `bunx astro dev` directly.
 
 ## Linting
 
@@ -102,9 +102,9 @@ bunx @biomejs/biome check --apply .
 
 - **Framework:** Astro 6 (beta)
 - **Site URL:** `https://zacbowling.com`
-- **Output Mode:** `server` (SSR with Cloudflare adapter)
-- **Adapter:** `@astrojs/cloudflare` (Cloudflare Workers)
-- **Image Service:** `compile` (Sharp at build time for prerendered pages)
+- **Output Mode:** `static` (prerendered at build time)
+- **Deployment:** Cloudflare Workers via Wrangler (static assets)
+- **CSS:** Tailwind CSS v4 via `@tailwindcss/vite` plugin
 
 **Integrations:**
 - `astro-expressive-code` - Code block syntax highlighting with "dark-plus" theme
@@ -112,7 +112,7 @@ bunx @biomejs/biome check --apply .
 - `@astrojs/sitemap` - Automatic sitemap generation
 - `spectre` (custom, in `/package`) - Custom integration with:
   - Name: "Zac Bowling"
-  - OpenGraph configuration for home, blog, and projects pages
+  - OpenGraph configuration for home page
 
 ### TypeScript Configuration (`tsconfig.json`)
 
@@ -135,13 +135,11 @@ bunx @biomejs/biome check --apply .
 ### Wrangler Configuration (`wrangler.jsonc`)
 
 - **Name:** `zacbowling`
-- **Main:** `@astrojs/cloudflare/entrypoints/server` (Cloudflare Workers entrypoint)
 - **Compatibility Date:** `2026-02-05`
-- **Compatibility Flags:** `["nodejs_compat"]`
-- **Observability:** Enabled
-- **Assets:** Bound as `ASSETS` from `./dist`
+- **Assets:** Static assets served from `./dist`
+- **404 Handling:** `404-page` (serves custom `404.html` from the build output)
 
-**Deployment:** This project deploys to **Cloudflare Workers** (not Pages). Use `wrangler deploy` after building.
+**Deployment:** This project deploys static assets to **Cloudflare Workers** (no Worker script). Use `bun run deploy` to build and deploy.
 
 ### Content Collections (`src/content.config.ts`)
 
@@ -203,7 +201,6 @@ This project uses **bun** as its package manager and runtime.
 
 **Production:**
 - `astro` - Astro 6 framework (beta)
-- `@astrojs/cloudflare` - Cloudflare Workers adapter
 - `@astrojs/mdx` - MDX support
 - `@astrojs/sitemap` - Sitemap generation
 - `@astrojs/check` - Type checking
@@ -217,4 +214,6 @@ This project uses **bun** as its package manager and runtime.
 
 **Development:**
 - `@biomejs/biome` - Linting and formatting
+- `@tailwindcss/vite` - Tailwind CSS Vite plugin
+- `tailwindcss` - Tailwind CSS v4
 - `shiki` - Syntax highlighting

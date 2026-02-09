@@ -568,5 +568,35 @@
     "category": "Politics",
     "description": "Interview about Democratic club canvassing efforts for Proposition 50 less than 48 hours before election day",
     "featured": false
+  },
+  {
+    "id": 58,
+    "title": "California Man Always Buys Annual Pass To National Parks. Then They Make A Change This Year That Makes Him Reconsider: 'I'd Pay More To NOT Have That Version'",
+    "date": "2025-12-13",
+    "url": "https://brobible.com/culture/article/national-parks-new-pass/",
+    "publication": "BroBible",
+    "category": "Politics",
+    "description": "Featured in viral coverage of the new America the Beautiful National Parks pass redesign",
+    "featured": true
+  },
+  {
+    "id": 59,
+    "title": "Trump mocked for putting his face on America the Beautiful passes for National Parks",
+    "date": "2025-12-11",
+    "url": "https://dailydot.com/trump-mocked-america-the-beautiful-pass-national-parks",
+    "publication": "Daily Dot",
+    "category": "Politics",
+    "description": "Viral TikTok about the new National Parks pass design with Trump's portrait",
+    "featured": true
+  },
+  {
+    "id": 60,
+    "title": "Linux Kernel 6.19 Reverts Code to Fix MediaTek MT792x WiFi Issues",
+    "date": "2026-01-02",
+    "url": "https://www.webpronews.com/linux-kernel-6-19-reverts-code-to-fix-mediatek-mt792x-wifi-issues/",
+    "publication": "WebProNews",
+    "category": "Technology",
+    "description": "Mentioned for submitting 11 patches to fix bugs in the MT792x WiFi driver in the Linux kernel",
+    "featured": true
   }
 ]

@@ -21,7 +21,7 @@ const { entries } = Astro.props;
     {entries.map((entry, i) => (
       <div class:list={["relative pl-12 md:pl-16 py-8 group reveal", `reveal-delay-${Math.min(i + 1, 5)}`]}>
         <!-- Dot -->
-        <div class="absolute left-2.5 md:left-4.5 top-9 w-3 h-3 rounded-full border-2 border-forest bg-ivory group-hover:bg-forest transition-colors duration-300" aria-hidden="true"></div>
+        <div class="absolute left-2.5 md:left-[1.125rem] top-9 w-3 h-3 rounded-full border-2 border-forest bg-ivory group-hover:bg-forest transition-colors duration-300" aria-hidden="true"></div>
 
         <!-- Duration -->
         <span class="text-sm text-text-muted font-medium tracking-wide block mb-1.5">

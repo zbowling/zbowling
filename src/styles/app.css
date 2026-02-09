@@ -209,6 +209,15 @@
   .reveal-delay-4 { transition-delay: 0.4s; }
   .reveal-delay-5 { transition-delay: 0.5s; }
 
+  /* Progressive enhancement: show content if JS is disabled or reduced motion preferred */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
   /* Overline label */
   .overline {
     font-family: var(--font-body);
