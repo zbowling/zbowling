@@ -3,7 +3,11 @@ import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async ({ site }) => {
 	let posts: Awaited<ReturnType<typeof getCollection>> = [];
-	try { posts = await getCollection("posts"); } catch {}
+	try {
+		posts = await getCollection("posts");
+	} catch (e) {
+		console.warn("Failed to load posts collection:", e);
+	}
 	const projects = await getCollection("projects");
 	const newsCollection = await getCollection("news");
 	const workExperience = await getCollection("workExperience");
@@ -11,7 +15,7 @@ export const GET: APIRoute = async ({ site }) => {
 	const cards = await getCollection("cards");
 	const about = await getEntry("other", "about");
 
-	const siteUrl = site?.toString() || "https://zacbowling.com";
+	const siteUrl = (site?.toString() || "https://zacbowling.com").replace(/\/?$/, '/');
 
 	let content = `# Zac Bowling\n\n`;
 	content += `Software engineer, political activist, affordable housing advocate. Alameda, CA. ${siteUrl}\n\n`;

@@ -162,12 +162,14 @@ const specializations = [
       />
       <div class="max-w-3xl">
         <Timeline
-          entries={techRoles.map((w) => ({
-            title: w.data.title,
-            company: w.data.company,
-            duration: w.data.duration,
-            description: w.data.description,
-          }))}
+          entries={techRoles
+            .sort((a, b) => (a.data.id ?? 0) - (b.data.id ?? 0))
+            .map((w) => ({
+              title: w.data.title,
+              company: w.data.company,
+              duration: w.data.duration,
+              description: w.data.description,
+            }))}
         />
       </div>
     </div>

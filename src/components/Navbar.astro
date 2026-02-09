@@ -1,7 +1,7 @@
 ---
 import { name } from "spectre:globals";
 
-const path = Astro.url.pathname;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const navItems = [
   { label: "Engineering", href: "/engineering" },
@@ -51,6 +51,8 @@ const navItems = [
       class="md:hidden flex items-center justify-center w-10 h-10 text-text"
       id="mobile-toggle"
       aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
     >
       <svg class="menu-open-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <line x1="4" y1="7" x2="20" y2="7" />
@@ -65,7 +67,7 @@ const navItems = [
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="md:hidden overflow-hidden transition-all duration-500 ease-out max-h-0 opacity-0 bg-ivory" id="mobile-menu">
+  <div class="md:hidden overflow-hidden transition-all duration-500 ease-out max-h-0 opacity-0 bg-ivory" id="mobile-menu" aria-hidden="true">
     <div class="container-narrow pb-8 pt-2">
       <ul class="list-none m-0 p-0 flex flex-col gap-0">
         {navItems.map((item, i) => (
@@ -124,12 +126,16 @@ const navItems = [
       closeIcon.classList.add('hidden');
       header.classList.remove('bg-ivory', 'border-b', 'border-border');
       handleScroll();
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
     } else {
       menu.classList.remove('max-h-0', 'opacity-0');
       menu.classList.add('max-h-screen', 'opacity-100');
       openIcon.classList.add('hidden');
       closeIcon.classList.remove('hidden');
       header.classList.add('bg-ivory', 'border-b', 'border-border');
+      toggle.setAttribute('aria-expanded', 'true');
+      menu.setAttribute('aria-hidden', 'false');
     }
   });
 </script>

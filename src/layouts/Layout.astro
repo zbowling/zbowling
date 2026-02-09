@@ -2,7 +2,7 @@
 import '../styles/app.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import { name, themeColor } from 'spectre:globals';
+import { name, themeColor, twitterHandle } from 'spectre:globals';
 
 interface Props {
 	title: string;
@@ -43,7 +43,7 @@ const siteTitle = title === name ? title : `${title} — ${name}`;
 		<!-- Open Graph -->
 		<meta property="og:title" content={siteTitle} />
 		{description && <meta property="og:description" content={description} />}
-		<meta property="og:image" content={image?.src || '/favicon.svg'} />
+		<meta property="og:image" content={image?.src || new URL('/favicon.svg', Astro.site || Astro.url).href} />
 		<meta property="og:url" content={Astro.url} />
 		{!article && <meta property="og:type" content="website" />}
 		<meta property="og:locale" content="en" />
@@ -62,10 +62,17 @@ const siteTitle = title === name ? title : `${title} — ${name}`;
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={siteTitle} />
 		{description && <meta name="twitter:description" content={description} />}
-		<meta name="twitter:image" content={image?.src || '/favicon.svg'} />
+		<meta name="twitter:image" content={image?.src || new URL('/favicon.svg', Astro.site || Astro.url).href} />
+		{twitterHandle && (
+			<>
+				<meta name="twitter:site" content={twitterHandle} />
+				<meta name="twitter:creator" content={twitterHandle} />
+			</>
+		)}
 
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
+		<noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 	</head>
 	<body class="bg-ivory text-text min-h-screen flex flex-col">
 		<Navbar />

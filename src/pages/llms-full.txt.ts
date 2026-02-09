@@ -3,7 +3,11 @@ import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async () => {
 	let posts: Awaited<ReturnType<typeof getCollection>> = [];
-	try { posts = await getCollection("posts"); } catch {}
+	try {
+		posts = await getCollection("posts");
+	} catch (e) {
+		console.warn("Failed to load posts collection:", e);
+	}
 	const projects = await getCollection("projects");
 	const cards = await getCollection("cards");
 	const other = await getCollection("other");
